@@ -7,7 +7,6 @@ import {
   ArrowRight,
   ArrowUpRight,
 } from "lucide-react";
-import SeoStudio from "@/components/SeoStudio";
 import JsonLd from "@/components/JsonLd";
 import {
   baseURL,
@@ -97,10 +96,27 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-preview">
-          <SeoStudio />
-          <div className="preview-footnote">
-            <span className="mini-mark">↗</span> What you build deserves to be
-            found.
+          <div className="relative overflow-hidden rounded-xl border border-[var(--border)] bg-[#0d1117] p-6 shadow-2xl font-mono text-sm">
+            {/* Barre de fenêtre Mac */}
+            <div className="flex gap-2 mb-6">
+              <div className="w-3 h-3 rounded-full bg-red-500"></div>
+              <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            </div>
+            {/* Code factice */}
+            <div className="text-gray-400">
+              <p><span className="text-purple-400">const</span> developer = {"{"}</p>
+              <p className="pl-4">name: <span className="text-green-400">'Faisal Safadi'</span>,</p>
+              <p className="pl-4">role: <span className="text-green-400">'Full-Stack Engineer'</span>,</p>
+              <p className="pl-4">experience: <span className="text-blue-400">12</span>,</p>
+              <p className="pl-4">stack: [<span className="text-green-400">'Next.js'</span>, <span className="text-green-400">'Laravel'</span>, <span className="text-green-400">'SEO'</span>],</p>
+              <p className="pl-4">availableForWork: <span className="text-orange-400">true</span>,</p>
+              <p className="pl-4">problemSolver: <span className="text-orange-400">true</span>,</p>
+              <p>{"}"};</p>
+            </div>
+          </div>
+          <div className="preview-footnote mt-4">
+            <span className="mini-mark">↗</span> Building robust systems since 2014.
           </div>
         </div>
       </section>
@@ -210,48 +226,48 @@ export default function Home() {
           </div>
         </div>
       </section>
-     <section className="shell section quickstart">
-  <div>
-    <span className="eyebrow">HOW I WORK</span>
-    <h2>
-      From problem
-      <br />
-      to production.
-    </h2>
-    <Link className="text-link" href="/contact">
-      Start a conversation <ArrowRight size={17} />
-    </Link>
-  </div>
-  <ol className="steps">
-    <li>
-      <span>01</span>
-      <div>
-        <h3>Diagnose</h3>
-        <p>
-          I start by understanding the system, the constraints, and what "fixed" actually means for your business. No assumptions.
-        </p>
-      </div>
-    </li>
-    <li>
-      <span>02</span>
-      <div>
-        <h3>Build or Rescue</h3>
-        <p>
-          Clear scope, incremental delivery, and code your team can maintain after I leave. I document decisions, not just features.
-        </p>
-      </div>
-    </li>
-    <li>
-      <span>03</span>
-      <div>
-        <h3>Hand over</h3>
-        <p>
-          You get working software, a written summary of what changed and why, and a point of contact for the transition.
-        </p>
-      </div>
-    </li>
-  </ol>
-</section>
+      <section className="shell section quickstart">
+        <div>
+          <span className="eyebrow">HOW I WORK</span>
+          <h2>
+            From problem
+            <br />
+            to production.
+          </h2>
+          <Link className="text-link" href="/contact">
+            Start a conversation <ArrowRight size={17} />
+          </Link>
+        </div>
+        <ol className="steps">
+          <li>
+            <span>01</span>
+            <div>
+              <h3>Diagnose</h3>
+              <p>
+                I start by understanding the system, the constraints, and what "fixed" actually means for your business. No assumptions.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>02</span>
+            <div>
+              <h3>Build or Rescue</h3>
+              <p>
+                Clear scope, incremental delivery, and code your team can maintain after I leave. I document decisions, not just features.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>03</span>
+            <div>
+              <h3>Hand over</h3>
+              <p>
+                You get working software, a written summary of what changed and why, and a point of contact for the transition.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </section>
 
       <section className="shell final-cta">
         <span className="eyebrow">YOUR IDEA IS NEXT</span>

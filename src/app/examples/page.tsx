@@ -1,81 +1,49 @@
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { pageMetadata } from "@/lib/seo";
+import { examples } from "#site/content";
+import ExampleCard from "@/components/ExampleCard";
+
 export const metadata = pageMetadata(
-  "Practical SEO examples",
+  "Examples",
   "/examples",
-  "Explore working article and product pages with metadata, social images, and structured data.",
+  "Open-source tools, experimental projects, and technical demos by Faisal Safadi.",
 );
+
 export default function Examples() {
+  const sortedExamples = [...examples].sort((a, b) => a.order - b.order);
+
   return (
     <main id="main">
       <section className="shell page-hero">
-        <span className="eyebrow">LEARN BY BUILDING</span>
+        <span className="eyebrow">OPEN SOURCE & EXPERIMENTS</span>
         <h1>
-          Real pages.
+          Code, tools,
           <br />
-          Readable source.
+          and technical demos.
         </h1>
         <p>
-          Explore the output, then open the code. These small examples are yours
-          to change.
+          A collection of side projects, open-source repositories, and code experiments. 
+          Most of these are available on my GitHub.
         </p>
       </section>
-      <section className="shell section">
-        <div className="example-grid">
-          <Link className="example-card" href="/examples/articles">
-            <div className="journal-cover">
-              <div>
-                FIELDNOTES <span>01 / JOURNAL</span>
-              </div>
-              <strong>
-                Ideas worth
-                <br />
-                <em>finding.</em>
-              </strong>
-              <span className="cover-orbit" aria-hidden="true">
-                ✳
-              </span>
-            </div>
-            <div className="example-caption">
-              <div>
-                <h3>Article collection</h3>
-                <p>Static generation, per-article metadata, Article schema.</p>
-              </div>
-              <ArrowUpRight />
-            </div>
-          </Link>
-          <Link className="example-card" href="/examples/product">
-            <div className="product-cover">
-              <span className="product-cover-label">
-                LAUNCHKIT / OPEN SOURCE
-              </span>
-              <div className="mock-checklist">
-                <span>
-                  ✓ <b>Page titles</b>
-                </span>
-                <span>
-                  ✓ <b>Canonical URLs</b>
-                </span>
-                <span>
-                  ○ <b>Your next launch</b>
-                </span>
-              </div>
-              <strong>
-                Ready, set,
-                <br />
-                launch.
-              </strong>
-            </div>
-            <div className="example-caption">
-              <div>
-                <h3>Product page</h3>
-                <p>A usable launch checklist with metadata and breadcrumbs.</p>
-              </div>
-              <ArrowUpRight />
-            </div>
-          </Link>
-        </div>
+
+      <section className="shell" style={{ paddingTop: "2rem", paddingBottom: "5rem" }}>
+        {sortedExamples.length === 0 ? (
+          <p className="text-[var(--text-muted)] italic">No examples published yet. Check back soon.</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+            {sortedExamples.map((project, index) => (
+              <ExampleCard
+                key={project.slug}
+                title={project.title}
+                description={project.description}
+                slug={project.slug}
+                category={project.category}
+                technologies={project.technologies}
+                index={index}
+              />
+            ))}
+          </div>
+        )}
       </section>
     </main>
   );

@@ -6,6 +6,7 @@ category: "Full-Stack"
 technologies: ["Next.js", "REST API", "SEO"]
 featured: true
 order: 1
+coverImage: "/images/work/portail-villas-luxe.jpg"
 ---
 
 ## The Context

@@ -12,7 +12,6 @@ export const metadata = pageMetadata(
 );
 
 export default function Work() {
-  // Tri des projets par le champ 'order' défini dans le frontmatter
   const sortedWork = [...work].sort((a, b) => a.order - b.order);
 
   return (
@@ -31,11 +30,12 @@ export default function Work() {
         </p>
       </section>
 
-      <section className="shell content-shell" style={{ paddingTop: "0" }}>
+      {/* J'ai retiré le style paddingTop: 0 et ajusté l'espacement */}
+      <section className="shell" style={{ paddingTop: "2rem", paddingBottom: "5rem" }}>
         {sortedWork.length === 0 ? (
           <p className="text-[var(--text-muted)] italic">No projects published yet. Check back soon.</p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
             {sortedWork.map((project, index) => (
               <WorkCard
                 key={project.slug}
@@ -44,6 +44,7 @@ export default function Work() {
                 slug={project.slug}
                 category={project.category}
                 technologies={project.technologies}
+                coverImage={project.coverImage?.src}
                 index={index}
               />
             ))}
@@ -51,7 +52,7 @@ export default function Work() {
         )}
       </section>
 
-      <section className="shell section final-cta" style={{ marginTop: "4rem" }}>
+      <section className="shell section final-cta" style={{ borderTop: "1px solid var(--border)" }}>
         <span className="eyebrow">NEXT STEPS</span>
         <h2>
           Need a similar

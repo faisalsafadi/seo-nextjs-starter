@@ -6,6 +6,7 @@ category: "CMS"
 technologies: ["WordPress", "PHP", "SEO"]
 featured: false
 order: 2
+coverImage: "/images/work/villa-wordpress.png"
 ---
 
 ## The Context

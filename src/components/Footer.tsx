@@ -10,9 +10,9 @@ export default function Footer() {
           <p>Good foundations. Your next idea.</p>
         </div>
         <div className="footer-links">
+          <Link href="/work">Work</Link>
+          <Link href="/contact">Contact</Link>
           <Link href="/examples">Examples</Link>
-
-
         </div>
       </div>
       <div className="shell footer-bottom">

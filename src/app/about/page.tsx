@@ -44,7 +44,7 @@ export default function About() {
           how I can help.
         </p>
         <div className="inline-links">
-          <a href={`mailto:${contactEmail}`}>Email me ↗</a>
+          <a href="/contact">Contact me ↗</a>
           <a href={mainSiteURL} target="_blank" rel="noopener noreferrer">
             Visit faisalsafadi.com ↗
           </a>

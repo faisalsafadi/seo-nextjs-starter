@@ -24,7 +24,7 @@ export default function Work() {
           discuss specific projects or request private references.
         </p>
         <div className="hero-buttons">
-          <a className="button button-blue" href={`mailto:${contactEmail}`}>
+          <a className="button button-blue" href="/contact">
             Request references ↗
           </a>
           <Link className="button button-outline" href="/about">

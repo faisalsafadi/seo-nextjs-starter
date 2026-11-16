@@ -17,5 +17,13 @@ export const indexable = canIndex(process.env);
 export const mainSiteURL = "https://faisalsafadi.com";
 export const contactEmail = "faisalsafadi@gmail.com";
 
-/** Votre profil GitHub (ou LinkedIn, X…) */
-// export const githubURL = "https://github.com/faisalsafadi";
+
+// ─── Contact & Réseaux ────────────────────────────────────────
+export const phoneNumber = "+212 6 68 96 41 68";  
+export const whatsappURL = "https://wa.me/212668964168";  
+
+export const socials = {
+  github: "https://github.com/faisalsafadi",  
+  linkedin: "https://www.linkedin.com/in/faisal-safadi",  
+  facebook: "https://www.facebook.com/faisalsafadi",  
+};

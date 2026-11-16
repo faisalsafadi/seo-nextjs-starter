@@ -108,8 +108,8 @@ export default function Home() {
             <Link className="button button-blue" href="/work">
               See my work <ArrowRight size={16} />
             </Link>
-            <a className="button button-outline" href={`mailto:${contactEmail}`}>
-              Email me <ArrowUpRight size={16} />
+            <a className="button button-outline" href="/contact">
+              Contact me <ArrowUpRight size={16} />
             </a>
           </div>
           <div className="hero-note">
@@ -299,7 +299,7 @@ export default function Home() {
           <br />
           worth finding.
         </h2>
-        <a className="button button-blue" href={`mailto:${contactEmail}`}>
+        <a className="button button-blue" href="/contact">
           Let's work together <ArrowUpRight size={17} />
         </a>
         <p>Available for freelance, consulting, and interesting projects.</p>

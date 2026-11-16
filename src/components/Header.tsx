@@ -60,7 +60,7 @@ export default function Header({ contactEmail }: { contactEmail: string }) {
           </button>
           <a
             className="button button-dark header-deploy"
-            href={`mailto:${contactEmail}`}
+            href="/contact"
           >
             Contact <span aria-hidden="true">✉</span>
           </a>

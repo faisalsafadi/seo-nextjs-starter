@@ -1,54 +1,56 @@
 import Link from "next/link";
-import AuthorProjects from "@/components/AuthorProjects";
-import { repository, templateURL } from "@/config";
+import { mainSiteURL, contactEmail } from "@/config";
 import { pageMetadata } from "@/lib/seo";
+
 export const metadata = pageMetadata(
-  "About the starter",
+  "About",
   "/about",
-  "Why SEO Next.js Starter exists, what it includes, and how to make it your own.",
+  "About Faisal Safadi — web developer specialized in Next.js, Laravel, and technical SEO.",
 );
+
 export default function About() {
   return (
     <main id="main">
       <section className="shell page-hero">
-        <span className="eyebrow">OPEN SOURCE, BY DESIGN</span>
+        <span className="eyebrow">ABOUT</span>
         <h1>
-          A better starting point
+          Building fast,
           <br />
-          for the next idea.
+          visible websites.
         </h1>
         <p>
-          SEO Next.js Starter brings the everyday SEO pieces together in a
-          small, readable Next.js project.
+          I&apos;m Faisal Safadi, a web developer based in Marrakech, Morocco.
+          I build modern, performant websites with Next.js, Laravel, and a
+          strong focus on technical SEO.
         </p>
       </section>
       <article className="shell content-shell prose">
-        <h2>Built to be understood.</h2>
+        <h2>What I do.</h2>
         <p>
-          A starter should save you setup time and make the important decisions
-          easy to inspect. Here, every example connects a working page to its
-          metadata, sitemap entry, and social image.
+          I design and develop websites that are fast, accessible, and built
+          to be found. From frontend architecture to backend integrations, I
+          take care of the whole stack — and make sure search engines
+          understand what they crawl.
         </p>
-        <h2>Created by Leo Wang.</h2>
+        <h2>How I work.</h2>
         <p>
-          I build web products and tools. This project is a collection of
-          practical foundations for developers who want to spend more time on
-          their own content and ideas.
+          Clear scope, clean code, and measurable results. I work with
+          founders, agencies, and small teams who care about quality and
+          long-term maintainability.
         </p>
-        <h2>Yours to change.</h2>
+        <h2>Let&apos;s talk.</h2>
         <p>
-          The project is MIT licensed. Keep what helps, replace the demo content
-          and branding, and remove author project links if they do not belong on
-          your site. Attribution is governed by the MIT license, not a mandatory
-          website backlink.
+          Have a project in mind? Send me an email and let&apos;s figure out
+          how I can help.
         </p>
         <div className="inline-links">
-          <a href={templateURL}>Use the template ↗</a>
-          <a href={`${repository}/issues`}>Share feedback ↗</a>
-          <Link href="/docs">Read the docs →</Link>
+          <a href={`mailto:${contactEmail}`}>Email me ↗</a>
+          <a href={mainSiteURL} target="_blank" rel="noopener noreferrer">
+            Visit faisalsafadi.com ↗
+          </a>
+          <Link href="/examples">Browse examples →</Link>
         </div>
       </article>
-      <AuthorProjects />
     </main>
   );
 }

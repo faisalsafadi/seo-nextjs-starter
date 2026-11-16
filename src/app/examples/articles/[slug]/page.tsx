@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { articles } from "@/content/articles";
-import { baseURL, repository, siteName } from "@/config";
+import { baseURL, siteName } from "@/config";
 import { breadcrumbs, pageMetadata } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
 export const dynamicParams = false;
@@ -100,11 +100,9 @@ export default async function Article({
           <a href={`/api/og?title=${encodeURIComponent(article.title)}`}>
             Open this social image ↗
           </a>
-          <a
-            href={`${repository}/blob/main/src/app/examples/articles/%5Bslug%5D/page.tsx`}
-          >
-            Read the page source ↗
-          </a>
+          <Link href="/examples/articles" className="button button-outline">
+            More articles ↗
+          </Link>
           <Link href="/examples/articles">All articles →</Link>
         </div>
         <p>

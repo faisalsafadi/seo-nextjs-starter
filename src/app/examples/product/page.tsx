@@ -1,13 +1,14 @@
 import Link from "next/link";
-import { repository } from "@/config";
 import { breadcrumbs, pageMetadata } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
 import LaunchChecklist from "@/components/LaunchChecklist";
+
 export const metadata = pageMetadata(
   "LaunchKit — a practical site launch checklist",
   "/examples/product",
-  "A simple, free checklist for your next website launch. A working product-page example from SEO Next.js Starter.",
+  "A simple, free checklist for your next website launch.",
 );
+
 export default function Product() {
   return (
     <main id="main">
@@ -37,12 +38,9 @@ export default function Product() {
           <a className="button button-blue" href="#checklist">
             Try the checklist ↓
           </a>
-          <a
-            className="button button-outline"
-            href={`${repository}/blob/main/src/app/examples/product/page.tsx`}
-          >
-            Read the source ↗
-          </a>
+          <Link className="button button-outline" href="/examples">
+            More examples ↗
+          </Link>
         </div>
       </section>
       <section className="shell content-shell">
@@ -62,7 +60,6 @@ export default function Product() {
             Replace the copy and checklist with your product, keeping the SEO
             configuration tied to the actual page.
           </p>
-          <Link href="/docs#metadata">See how page metadata works →</Link>
         </div>
       </section>
     </main>

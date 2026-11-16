@@ -10,14 +10,12 @@ import {
   Search,
 } from "lucide-react";
 import SeoStudio from "@/components/SeoStudio";
-import AuthorProjects from "@/components/AuthorProjects";
 import JsonLd from "@/components/JsonLd";
 import {
   baseURL,
-  deployURL,
-  repository,
+  mainSiteURL,
+  contactEmail,
   siteName,
-  templateURL,
   title,
 } from "@/config";
 import { pageMetadata } from "@/lib/seo";
@@ -28,7 +26,7 @@ const features = [
     title: "Every page, its own identity.",
     text: "Page titles, descriptions, and canonical URLs that belong to the page you're on.",
     label: "PAGE METADATA",
-    href: "/docs#metadata",
+    href: "/examples/articles/canonical-urls",
   },
   {
     icon: Map,
@@ -63,7 +61,7 @@ const features = [
     title: "Your site. Your configuration.",
     text: "Set your production URL once. Preview deployments stay out of the index.",
     label: "DEPLOYMENT DEFAULTS",
-    href: "/docs#deployment",
+    href: "/about",
   },
 ];
 export default function Home() {
@@ -80,23 +78,20 @@ export default function Home() {
       <JsonLd
         data={{
           "@context": "https://schema.org",
-          "@type": "SoftwareSourceCode",
-          name: siteName,
-          codeRepository: repository,
-          programmingLanguage: ["TypeScript", "JavaScript"],
-          license: `${repository}/blob/main/LICENSE`,
-          version: "1.0.0",
-          description:
-            "An open-source Next.js starter with inspectable SEO examples.",
+          "@type": "Person",
+          name: "Faisal Safadi",
+          url: baseURL,
+          jobTitle: "Web Developer & SEO",
+          sameAs: [mainSiteURL],
+          email: contactEmail,
         }}
       />
       <section className="shell hero">
         <div className="hero-copy">
-          <Link className="release-label" href="/docs#whats-new">
-            <span className="release-dot" /> v1.0 is here{" "}
-            <span className="release-separator">/</span> Built on Next.js 16{" "}
-            <ArrowUpRight size={13} />
-          </Link>
+          <span className="release-label">
+            <span className="release-dot" /> Available for freelance & consulting{" "}
+            <span className="release-separator">/</span> Based in Marrakech
+          </span>
           <h1>
             A head start
             <br />
@@ -109,12 +104,16 @@ export default function Home() {
             sitemaps, social images, and examples you can make your own.
           </p>
           <div className="hero-buttons">
-            <a className="button button-blue" href={deployURL}>
-              <span aria-hidden="true">▲</span> Deploy to Vercel{" "}
-              <ArrowUpRight size={16} />
+            <a className="button button-blue" href={`mailto:${contactEmail}`}>
+              <span aria-hidden="true">✉</span> Get in touch <ArrowUpRight size={16} />
             </a>
-            <a className="button button-outline" href={templateURL}>
-              Use template <ArrowRight size={16} />
+            <a
+              className="button button-outline"
+              href={mainSiteURL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View my work <ArrowRight size={16} />
             </a>
           </div>
           <div className="hero-note">
@@ -259,18 +258,18 @@ export default function Home() {
             <br />
             three steps away.
           </h2>
-          <Link className="text-link" href="/docs">
-            Read the quickstart <ArrowRight size={17} />
+          <Link className="text-link" href="/examples">
+            Explore examples <ArrowRight size={17} />
           </Link>
         </div>
         <ol className="steps">
           <li>
             <span>01</span>
             <div>
-              <h3>Make it yours</h3>
+              <h3>Understand your goals</h3>
               <p>
-                Create a repository from the template. Install the dependencies
-                with pnpm.
+                Every project starts with a conversation. Let's talk about what
+                you want to build and what success looks like.
               </p>
             </div>
           </li>
@@ -296,7 +295,7 @@ export default function Home() {
           </li>
         </ol>
       </section>
-      <AuthorProjects />
+
       <section className="shell final-cta">
         <span className="eyebrow">YOUR IDEA IS NEXT</span>
         <h2>
@@ -304,10 +303,10 @@ export default function Home() {
           <br />
           worth finding.
         </h2>
-        <a className="button button-blue" href={deployURL}>
-          Start with this template <ArrowUpRight size={17} />
+        <a className="button button-blue" href={`mailto:${contactEmail}`}>
+          Let's work together <ArrowUpRight size={17} />
         </a>
-        <p>Free and open source. Yours to build on.</p>
+        <p>Available for freelance, consulting, and interesting projects.</p>
       </section>
     </main>
   );

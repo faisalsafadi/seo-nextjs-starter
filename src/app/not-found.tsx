@@ -14,9 +14,14 @@ export default function NotFound() {
         <Link className="button button-blue" href="/">
           Back to home
         </Link>
-        <Link className="button button-outline" href="/docs">
-          Open documentation
+        <Link className="button button-outline" href="/examples">
+          Browse examples
         </Link>
+
+// Choix 2 — vers votre site principal
+        <a className="button button-outline" href="https://faisalsafadi.com">
+          Visit faisalsafadi.com
+        </a>
       </div>
     </main>
   );

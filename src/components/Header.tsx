@@ -1,19 +1,16 @@
 "use client";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { ArrowUpRight, Menu, SunMoon, X } from "lucide-react";
+import { Menu, SunMoon, X } from "lucide-react";
 import Brand from "./Brand";
+import { siteName } from "@/config";
 
-export default function Header({
-  deployURL,
-  repository,
-}: {
-  deployURL: string;
-  repository: string;
-}) {
+export default function Header({ contactEmail }: { contactEmail: string }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+
   function toggleTheme() {
     const dark =
       document.documentElement.dataset.theme === "dark" ||
@@ -25,15 +22,16 @@ export default function Header({
       localStorage.setItem("theme", next ? "dark" : "light");
     } catch {}
   }
-  const navigation = [
+
+  const navigation: [string, string][] = [
     ["Examples", "/examples"],
-    ["Docs", "/docs"],
     ["About", "/about"],
   ];
+
   return (
     <header className="site-header">
       <div className="shell header-inner">
-        <Link href="/" aria-label="SEO Next.js Starter home">
+        <Link href="/" aria-label={`${siteName} home`}>
           <Brand />
         </Link>
         <nav
@@ -51,9 +49,6 @@ export default function Header({
               {label}
             </Link>
           ))}
-          <a href={repository} target="_blank" rel="noopener noreferrer">
-            GitHub <ArrowUpRight size={13} />
-          </a>
         </nav>
         <div className="header-actions">
           <button
@@ -63,8 +58,8 @@ export default function Header({
           >
             <SunMoon size={18} />
           </button>
-          <a className="button button-dark header-deploy" href={deployURL}>
-            Deploy <span aria-hidden="true">▲</span>
+          <a className="button button-dark header-deploy" href={`mailto:${contactEmail}`}>
+            Contact <span aria-hidden="true">✉</span>
           </a>
           <button
             className="icon-button menu-button"

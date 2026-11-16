@@ -5,8 +5,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   if (!indexable) return [];
   return [
     "/",
-    "/docs",
-    "/docs/zh",
     "/about",
     "/examples",
     "/examples/articles",

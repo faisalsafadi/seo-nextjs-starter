@@ -4,6 +4,7 @@ import { examples } from "#site/content";
 import { pageMetadata } from "@/lib/seo";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { contactEmail } from "@/config";
+import Image from "next/image";
 
 export async function generateStaticParams() {
     return examples.map((project) => ({ slug: project.slug }));
@@ -70,7 +71,19 @@ export default async function ExampleDetail({ params }: { params: Promise<{ slug
                     </div>
                 </div>
             </section>
-
+            {project.coverImage && (
+                <section className="shell" style={{ marginTop: "2rem", marginBottom: "2rem" }}>
+                    <div className="relative w-full aspect-[21/9] sm:aspect-[16/7] overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-alt)]">
+                        <Image
+                            src={project.coverImage}
+                            alt={project.title}
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                    </div>
+                </section>
+            )}
             <section className="shell content-shell">
                 <article
                     className="prose max-w-none"

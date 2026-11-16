@@ -6,7 +6,8 @@ category: "Frontend"
 technologies: ["Next.js", "TypeScript", "Tailwind"]
 featured: true
 order: 1
-githubURL: "https://github.com/faisalsafadi"
+githubURL: "https://github.com/faisalsafadi/seo-nextjs-starter"
+coverImage: "/images/examples/starter-cover.png"
 ---
 
 ## About this project

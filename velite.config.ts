@@ -1,7 +1,7 @@
 import { defineConfig, defineCollection, s } from "velite";
 
 const baseSchema = s.object({
-  slug: s.slug(),                                          // ← AJOUT
+  slug: s.path(),
   title: s.string().max(99),
   description: s.string().max(200),
   date: s.isodate(),
@@ -16,23 +16,10 @@ const baseSchema = s.object({
 });
 
 export default defineConfig({
-  root: "content",
-  output: {
-    data: ".velite",
-    assets: "public/static",
-    base: "/static/",
-    clean: true,
-  },
+  root: "src/content",
+  output: { data: ".velite", assets: "public/static", base: "/static/", clean: true },
   collections: {
-    work: defineCollection({
-      name: "Work",
-      pattern: "work/**/*.md",
-      schema: baseSchema,
-    }),
-    examples: defineCollection({
-      name: "Example",
-      pattern: "examples/**/*.md",
-      schema: baseSchema,
-    }),
+    work: defineCollection({ name: "Work", pattern: "work/**/*.md", schema: baseSchema }),
+    examples: defineCollection({ name: "Example", pattern: "examples/**/*.md", schema: baseSchema }),
   },
 });

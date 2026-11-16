@@ -44,7 +44,7 @@ export default function Work() {
                 slug={project.slug}
                 category={project.category}
                 technologies={project.technologies}
-                coverImage={project.coverImage?.src}
+                coverImage={project.coverImage}
                 index={index}
               />
             ))}

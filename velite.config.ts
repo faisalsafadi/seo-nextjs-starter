@@ -9,7 +9,7 @@ const baseSchema = s.object({
   technologies: s.array(s.string()).default([]),
   featured: s.boolean().default(false),
   order: s.number().default(0),
-  coverImage: s.image().optional(),
+  coverImage: s.string().optional(),
   githubURL: s.string().url().optional(),
   liveURL: s.string().url().optional(),
   content: s.markdown(),

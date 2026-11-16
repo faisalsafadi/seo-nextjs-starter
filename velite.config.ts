@@ -1,7 +1,7 @@
 import { defineConfig, defineCollection, s } from "velite";
 
 const baseSchema = s.object({
-  slug: s.path(),
+  slug: s.path().transform((path) => path.split("/").pop()!), // ex: "work/portail-villas-luxe" → "portail-villas-luxe"
   title: s.string().max(99),
   description: s.string().max(200),
   date: s.isodate(),

@@ -7,7 +7,7 @@ export default function Brand({ compact = false }: { compact?: boolean }) {
       </span>
       {!compact && (
         <span>
-          SEO<span className="brand-light"> / Next.js</span>
+          FS<span className="brand-light"> | web studio</span>
         </span>
       )}
     </span>

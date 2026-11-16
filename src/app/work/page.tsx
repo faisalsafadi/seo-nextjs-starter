@@ -35,7 +35,8 @@ export default function Work() {
         {sortedWork.length === 0 ? (
           <p className="text-[var(--text-muted)] italic">No projects published yet. Check back soon.</p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+           
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
             {sortedWork.map((project, index) => (
               <WorkCard
                 key={project.slug}

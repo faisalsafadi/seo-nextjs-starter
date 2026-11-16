@@ -88,37 +88,33 @@ export default function Home() {
       />
       <section className="shell hero">
         <div className="hero-copy">
-          <span className="release-label">
-            <span className="release-dot" /> Available for freelance & consulting{" "}
+          <Link className="release-label" href="/about">
+            <span className="release-dot" /> Available for contract &amp; freelance work{" "}
             <span className="release-separator">/</span> Based in Marrakech
-          </span>
+          </Link>
           <h1>
-            A head start
+            I build and fix
             <br />
-            for your next
+            web systems that
             <br />
-            <span>search result.</span>
+            <span>can&apos;t afford to fail.</span>
           </h1>
           <p>
-            Ship your Next.js site with SEO foundations in place. Metadata,
-            sitemaps, social images, and examples you can make your own.
+            Full-stack developer with 12+ years of experience. I work with Laravel,
+            Next.js, and technical SEO to solve production problems — performance
+            bottlenecks, migration debt, and systems that need to scale.
           </p>
           <div className="hero-buttons">
-            <a className="button button-blue" href={`mailto:${contactEmail}`}>
-              <span aria-hidden="true">✉</span> Get in touch <ArrowUpRight size={16} />
-            </a>
-            <a
-              className="button button-outline"
-              href={mainSiteURL}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View my work <ArrowRight size={16} />
+            <Link className="button button-blue" href="/work">
+              See my work <ArrowRight size={16} />
+            </Link>
+            <a className="button button-outline" href={`mailto:${contactEmail}`}>
+              Email me <ArrowUpRight size={16} />
             </a>
           </div>
           <div className="hero-note">
-            <span>MIT licensed</span>
-            <i /> No account required to explore
+            <span>Remote-first</span>
+            <i /> English · Français · العربية
           </div>
         </div>
         <div className="hero-preview">

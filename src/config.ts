@@ -4,11 +4,11 @@ export const siteName =
   process.env.NEXT_PUBLIC_SITE_NAME || "Faisal Safadi";
 
 export const title =
-  process.env.NEXT_PUBLIC_TITLE || "Faisal Safadi — Développeur Web & SEO à Marrakech";
+  process.env.NEXT_PUBLIC_TITLE || "Faisal Safadi — Full-Stack Developer & Technical SEO";
 
 export const description =
   process.env.NEXT_PUBLIC_DESCRIPTION ||
-  "Développeur web à Marrakech, spécialisé en frontend, Laravel et SEO technique. Créez des sites performants et visibles sur Google. Contactez-moi pour votre projet.";
+  "Full-stack developer with 12+ years of experience. I build and fix production web systems with Laravel, Next.js, and technical SEO.";
 
 export const baseURL = resolveSiteUrl(process.env);
 export const indexable = canIndex(process.env);

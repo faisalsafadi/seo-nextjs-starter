@@ -24,7 +24,7 @@ export default function Header({ contactEmail }: { contactEmail: string }) {
   }
 
   const navigation: [string, string][] = [
-    ["Examples", "/examples"],
+    ["Work", "/work"],
     ["About", "/about"],
   ];
 
@@ -58,7 +58,10 @@ export default function Header({ contactEmail }: { contactEmail: string }) {
           >
             <SunMoon size={18} />
           </button>
-          <a className="button button-dark header-deploy" href={`mailto:${contactEmail}`}>
+          <a
+            className="button button-dark header-deploy"
+            href={`mailto:${contactEmail}`}
+          >
             Contact <span aria-hidden="true">✉</span>
           </a>
           <button

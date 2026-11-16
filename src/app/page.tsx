@@ -1,13 +1,11 @@
 import Link from "next/link";
+
 import {
+  Code,
+  Zap,
+  Wrench,
   ArrowRight,
   ArrowUpRight,
-  Braces,
-  FileCode2,
-  Globe2,
-  ImageIcon,
-  Map,
-  Search,
 } from "lucide-react";
 import SeoStudio from "@/components/SeoStudio";
 import JsonLd from "@/components/JsonLd";
@@ -20,48 +18,29 @@ import {
 } from "@/config";
 import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata(title, "/");
+
+
 const features = [
   {
-    icon: Search,
-    title: "Every page, its own identity.",
-    text: "Page titles, descriptions, and canonical URLs that belong to the page you're on.",
-    label: "PAGE METADATA",
-    href: "/examples/articles/canonical-urls",
+    icon: Code,
+    title: "Full-Stack Development",
+    text: "Production-ready applications built with Laravel and Next.js. Type-safe, tested, and designed to scale.",
+    label: "ENGINEERING",
+    href: "/contact",
   },
   {
-    icon: Map,
-    title: "Make your pages discoverable.",
-    text: "A sitemap built from your routes, plus production-aware robots settings.",
-    label: "SITEMAP & ROBOTS",
-    href: "/sitemap.xml",
+    icon: Zap,
+    title: "Performance & Tech SEO",
+    text: "Core Web Vitals optimization, architecture audits, and technical SEO to ensure your site is fast and visible.",
+    label: "OPTIMIZATION",
+    href: "/contact",
   },
   {
-    icon: ImageIcon,
-    title: "Look good when you get shared.",
-    text: "Dynamic Open Graph images with a real preview you can open and inspect.",
-    label: "SOCIAL IMAGES",
-    href: "/api/og",
-  },
-  {
-    icon: Braces,
-    title: "Give your content context.",
-    text: "Structured data examples for your website, articles, and breadcrumbs.",
-    label: "STRUCTURED DATA",
-    href: "/examples/articles/canonical-urls",
-  },
-  {
-    icon: FileCode2,
-    title: "Start with something useful.",
-    text: "A journal and product page. Read the source, change the content, make it yours.",
-    label: "REAL EXAMPLES",
-    href: "/examples",
-  },
-  {
-    icon: Globe2,
-    title: "Your site. Your configuration.",
-    text: "Set your production URL once. Preview deployments stay out of the index.",
-    label: "DEPLOYMENT DEFAULTS",
-    href: "/about",
+    icon: Wrench,
+    title: "Legacy System Rescue",
+    text: "Refactoring tangled codebases, migrating outdated stacks, and fixing production bottlenecks without breaking what works.",
+    label: "MAINTENANCE",
+    href: "/contact",
   },
 ];
 export default function Home() {
@@ -141,17 +120,15 @@ export default function Home() {
       <section className="shell section" id="features">
         <div className="section-heading">
           <div>
-            <span className="eyebrow">THE ESSENTIALS, INCLUDED</span>
-            <h2>
-              Less setup.
-              <br />
-              More of your idea.
-            </h2>
+            <span className="eyebrow">HOW I CAN HELP</span>
+            Engineering solutions
+            <br />
+            that scale.
           </div>
           <p>
-            The pieces you would otherwise wire up yourself.
+            I don't just write code. I solve business problems
             <br />
-            Ready to read, run, and change.
+            with maintainable, high-performance systems.
           </p>
         </div>
         <div className="feature-grid">
@@ -179,27 +156,27 @@ export default function Home() {
         <div className="shell section">
           <div className="section-heading">
             <div>
-              <span className="eyebrow">MORE THAN A LANDING PAGE</span>
+              <span className="eyebrow">SELECTED WORK</span>
               <h2>
-                Working examples.
+                Recent projects.
                 <br />
-                Useful starting points.
+                Measurable results.
               </h2>
             </div>
-            <Link className="text-link" href="/examples">
-              Explore all examples <ArrowRight size={17} />
+            <Link className="text-link" href="/work">
+              Explore all work <ArrowRight size={17} />
             </Link>
           </div>
           <div className="example-grid">
-            <Link className="example-card" href="/examples/articles">
-              <div className="journal-cover">
+            <Link className="example-card" href="/work">
+              <div className="journal-cover" style={{ background: "#e8e4d9", color: "#2d2a26" }}>
                 <div>
-                  FIELDNOTES <span>01 / JOURNAL</span>
+                  TOURISM PORTAL <span>01 / B2B</span>
                 </div>
                 <strong>
-                  Ideas worth
+                  Luxury Villas
                   <br />
-                  <em>finding.</em>
+                  <em>Marrakech.</em>
                 </strong>
                 <span className="cover-orbit" aria-hidden="true">
                   ✳
@@ -207,38 +184,25 @@ export default function Home() {
               </div>
               <div className="example-caption">
                 <div>
-                  <h3>The journal</h3>
-                  <p>Static articles · dynamic metadata · Article schema</p>
+                  <h3>Tourism Portal</h3>
+                  <p>Custom API · Multilingual · Booking Flow</p>
                 </div>
                 <ArrowUpRight size={22} />
               </div>
             </Link>
-            <Link className="example-card" href="/examples/product">
-              <div className="product-cover">
-                <span className="product-cover-label">
-                  LAUNCHKIT / OPEN SOURCE
-                </span>
-                <div className="mock-checklist">
-                  <span>
-                    ✓ <b>Give every page a title</b>
-                  </span>
-                  <span>
-                    ✓ <b>Set a canonical URL</b>
-                  </span>
-                  <span>
-                    ○ <b>Share your next idea</b>
-                  </span>
-                </div>
+            <Link className="example-card" href="/work">
+              <div className="product-cover" style={{ background: "#e3e8f0", color: "#1e293b" }}>
+                <span className="product-cover-label">E-COMMERCE / WORDPRESS</span>
                 <strong>
-                  Ready, set,
+                  Leather Catalog
                   <br />
-                  launch.
+                  Showcase.
                 </strong>
               </div>
               <div className="example-caption">
                 <div>
-                  <h3>The product page</h3>
-                  <p>Product storytelling · breadcrumbs · social cards</p>
+                  <h3>Leather Brand</h3>
+                  <p>Custom Post Types · High-Res Performance</p>
                 </div>
                 <ArrowUpRight size={22} />
               </div>
@@ -246,51 +210,48 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="shell section quickstart">
-        <div>
-          <span className="eyebrow">FROM REPO TO YOUR SITE</span>
-          <h2>
-            Your next project,
-            <br />
-            three steps away.
-          </h2>
-          <Link className="text-link" href="/examples">
-            Explore examples <ArrowRight size={17} />
-          </Link>
-        </div>
-        <ol className="steps">
-          <li>
-            <span>01</span>
-            <div>
-              <h3>Understand your goals</h3>
-              <p>
-                Every project starts with a conversation. Let's talk about what
-                you want to build and what success looks like.
-              </p>
-            </div>
-          </li>
-          <li>
-            <span>02</span>
-            <div>
-              <h3>Set your site identity</h3>
-              <p>
-                Add your domain, title, and description in the environment
-                configuration.
-              </p>
-            </div>
-          </li>
-          <li>
-            <span>03</span>
-            <div>
-              <h3>Deploy. Inspect. Share.</h3>
-              <p>
-                Deploy to Vercel, inspect the SEO output, and start building
-                your own content.
-              </p>
-            </div>
-          </li>
-        </ol>
-      </section>
+     <section className="shell section quickstart">
+  <div>
+    <span className="eyebrow">HOW I WORK</span>
+    <h2>
+      From problem
+      <br />
+      to production.
+    </h2>
+    <Link className="text-link" href="/contact">
+      Start a conversation <ArrowRight size={17} />
+    </Link>
+  </div>
+  <ol className="steps">
+    <li>
+      <span>01</span>
+      <div>
+        <h3>Diagnose</h3>
+        <p>
+          I start by understanding the system, the constraints, and what "fixed" actually means for your business. No assumptions.
+        </p>
+      </div>
+    </li>
+    <li>
+      <span>02</span>
+      <div>
+        <h3>Build or Rescue</h3>
+        <p>
+          Clear scope, incremental delivery, and code your team can maintain after I leave. I document decisions, not just features.
+        </p>
+      </div>
+    </li>
+    <li>
+      <span>03</span>
+      <div>
+        <h3>Hand over</h3>
+        <p>
+          You get working software, a written summary of what changed and why, and a point of contact for the transition.
+        </p>
+      </div>
+    </li>
+  </ol>
+</section>
 
       <section className="shell final-cta">
         <span className="eyebrow">YOUR IDEA IS NEXT</span>

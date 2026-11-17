@@ -1,6 +1,9 @@
 import Link from "next/link";
-import { mainSiteURL, contactEmail } from "@/config";
+//import { mainSiteURL, contactEmail } from "@/config";
 import { pageMetadata } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
+import { baseURL, mainSiteURL, contactEmail } from "@/config";
+
 
 export const metadata = pageMetadata(
   "About",
@@ -11,6 +14,22 @@ export const metadata = pageMetadata(
 export default function About() {
   return (
     <main id="main">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Faisal Safadi",
+          url: baseURL,
+          jobTitle: "Full-Stack Developer & Technical SEO",
+          sameAs: [mainSiteURL],
+          email: contactEmail,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Marrakech",
+            addressCountry: "MA",
+          },
+        }}
+      />
       <section className="shell page-hero">
         <span className="eyebrow">ABOUT</span>
         <h1>

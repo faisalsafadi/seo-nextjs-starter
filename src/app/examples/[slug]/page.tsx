@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { examples } from "#site/content";
-import { pageMetadata } from "@/lib/seo";
+//import { pageMetadata } from "@/lib/seo";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { contactEmail } from "@/config";
 import Image from "next/image";
+import { pageMetadata, breadcrumbs } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 
 export async function generateStaticParams() {
     return examples.map((project) => ({ slug: project.slug }));
@@ -31,6 +33,13 @@ export default async function ExampleDetail({ params }: { params: Promise<{ slug
 
     return (
         <main id="main">
+            <JsonLd
+                data={breadcrumbs([
+                    { name: "Home", path: "/" },
+                    { name: "Examples", path: "/examples" },
+                    { name: project.title, path: `/examples/${project.slug}` },
+                ])}
+            />
             <section className="shell page-hero" style={{ paddingBottom: "2rem" }}>
                 <nav className="breadcrumb" aria-label="Breadcrumb" style={{ marginBottom: "2rem" }}>
                     <Link href="/examples" className="flex items-center gap-2 text-sm text-[var(--text-muted)] hover:text-[var(--text)] transition-colors">

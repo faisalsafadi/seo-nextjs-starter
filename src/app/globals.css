@@ -208,13 +208,18 @@ p {
   letter-spacing: -0.045em;
 }
 .brand-mark {
-  width: 30px;
+  /* width: 30px;
   height: 30px;
   background: #225cf6;
   color: #fff;
   display: grid;
   place-items: center;
-  border-radius: 7px;
+  border-radius: 7px; */
+
+  width: 80px;
+  height: 80px;
+  display: grid;
+  padding-top: 10px;
 }
 .brand-light {
   font-weight: 400;

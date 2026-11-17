@@ -30,7 +30,6 @@ export default function Work() {
         </p>
       </section>
 
-      {/* J'ai retiré le style paddingTop: 0 et ajusté l'espacement */}
       <section className="shell" style={{ paddingTop: "2rem", paddingBottom: "5rem" }}>
         {sortedWork.length === 0 ? (
           <p className="text-[var(--text-muted)] italic">No projects published yet. Check back soon.</p>

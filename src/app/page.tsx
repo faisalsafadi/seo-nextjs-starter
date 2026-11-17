@@ -207,7 +207,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 3. SERVICES (Option 1 : Icone et Titre sur la même ligne) */}
+      {/* 3. SERVICES  */}
       <section className="shell section" id="features">
         <div className="section-heading">
           <div>
@@ -296,7 +296,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. OPEN SOURCE (NOUVEAU) */}
+      {/* 5. OPEN SOURCE */}
       <section className="shell section" style={{ paddingTop: "0" }}>
         <div className="section-heading">
           <div>
@@ -320,7 +320,6 @@ export default function Home() {
             >
               <div className="flex items-center justify-between mb-4">
                 <span className="eyebrow small text-xs">{project.category}</span>
-                {/* Lien GitHub spécifique au projet */}
                 {project.githubURL && (
                   <a
                     href={project.githubURL}
@@ -445,7 +444,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. CTA FINAL */}
+      {/* 9. CTA  */}
       <section className="shell final-cta">
         <span className="eyebrow">READY TO START?</span>
         <h2>

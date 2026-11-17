@@ -97,7 +97,6 @@ export default async function WorkDetail({ params }: { params: Promise<{ slug: s
               className="object-cover"
               priority
             />
-            {/* Optionnel : un dégradé subtil pour la lisibilité */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
           </div>
         </section>

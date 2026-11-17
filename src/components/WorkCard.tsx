@@ -28,7 +28,7 @@ export default function WorkCard({ title, description, slug, category, technolog
         {/* Conteneur principal de la carte avec fond et bordure */}
         <div className="flex flex-col h-full overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-alt)] transition-all duration-300 hover:border-[var(--text-muted)] hover:shadow-xl">
           
-          {/* Section Image (en haut) */}
+          {/* Section Image */}
           <div className="relative w-full aspect-[16/10] overflow-hidden">
             {coverImage ? (
               <Image
@@ -46,7 +46,7 @@ export default function WorkCard({ title, description, slug, category, technolog
             )}
           </div>
 
-          {/* Section Contenu (en bas) */}
+          {/* Section Contenu  */}
           <div className="flex flex-col flex-grow p-6 sm:p-8">
             <div className="flex items-center justify-between mb-3">
               <span className="eyebrow small text-xs tracking-wider uppercase text-[var(--text-muted)]">

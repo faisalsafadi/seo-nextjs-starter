@@ -14,19 +14,21 @@ import {
   mainSiteURL,
   contactEmail,
   siteName,
-  title,
+  socials,
 } from "@/config";
-import { pageMetadata } from "@/lib/seo";
-import { work } from "#site/content";
 
-// --- MÉTADONNÉES SEO ---
+
+
+import { pageMetadata } from "@/lib/seo";
+import { work, examples } from "#site/content"; // <-- Ajout de examples
+
 export const metadata = pageMetadata(
   "Freelance Full-Stack Developer for B2B Systems | Faisal Safadi",
   "/",
   "Full-stack developer with 12+ years of experience. I build and rescue production web systems with Laravel, Next.js, and technical SEO. Based in Marrakech, available worldwide."
 );
 
-// --- DONNÉES POUR LA PAGE ---
+// --- DONNÉES ---
 const services = [
   {
     icon: Code,
@@ -50,7 +52,11 @@ const services = [
 
 const featuredProjects = [...work]
   .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0) || a.order - b.order)
-  .slice(0, 3);
+  .slice(0, 2); // On garde 2 projets Work pour laisser de la place
+
+const featuredExamples = [...examples]
+  .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0) || a.order - b.order)
+  .slice(0, 2); // On ajoute 2 projets Open Source
 
 const testimonials = [
   {
@@ -88,7 +94,6 @@ const faqs = [
 export default function Home() {
   return (
     <main id="main">
-      {/* SCHÉMA JSON-LD (inchangé) */}
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -202,7 +207,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 3. SERVICES (RESPONSIVE) */}
+      {/* 3. SERVICES (Option 1 : Icone et Titre sur la même ligne) */}
       <section className="shell section" id="features">
         <div className="section-heading">
           <div>
@@ -219,29 +224,34 @@ export default function Home() {
             with maintainable, high-performance systems.
           </p>
         </div>
-        {/* Grille responsive : 1 col mobile, 3 cols desktop */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {services.map((service, i) => (
             <Link
               href={service.href}
-              className="feature-card"
+              className="feature-card flex flex-col"
               key={service.title}
             >
-              <div className="feature-top">
-                <span className="feature-icon">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="feature-icon shrink-0">
                   <service.icon size={22} strokeWidth={1.65} />
                 </span>
-                <span>0{i + 1}</span>
+                <h3 className="text-xl font-semibold m-0 flex-1 leading-tight">
+                  {service.title}
+                </h3>
+                <span className="text-sm font-mono text-[var(--text-muted)]">
+                  0{i + 1}
+                </span>
               </div>
-              <h3>{service.title}</h3>
-              <p>{service.description}</p>
-              <ArrowUpRight className="card-arrow" size={18} />
+              <p className="text-[var(--text-muted)] mb-6 flex-grow">
+                {service.description}
+              </p>
+              <ArrowUpRight className="card-arrow mt-auto self-end" size={18} />
             </Link>
           ))}
         </div>
       </section>
 
-      {/* 4. PROJETS SÉLECTIONNÉS (LIENS VERS DÉTAIL) */}
+      {/* 4. PROJETS SÉLECTIONNÉS (WORK) */}
       <section className="examples-section">
         <div className="shell section">
           <div className="section-heading">
@@ -257,16 +267,15 @@ export default function Home() {
               Explore all work <ArrowRight size={17} />
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {featuredProjects.map((project) => (
               <Link
                 key={project.slug}
                 className="example-card group"
-                href={`/work/${project.slug}`} // <-- LIEN VERS LE DÉTAIL
+                href={`/work/${project.slug}`}
               >
                 {project.coverImage && (
                   <div className="relative w-full aspect-[16/10] overflow-hidden rounded-t-xl">
-                    {/* Utilisez <Image> de Next.js ici pour l'optimisation */}
                     <img
                       src={project.coverImage}
                       alt={project.title}
@@ -287,7 +296,55 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. TÉMOIGNAGES */}
+      {/* 5. OPEN SOURCE (NOUVEAU) */}
+      <section className="shell section" style={{ paddingTop: "0" }}>
+        <div className="section-heading">
+          <div>
+            <span className="eyebrow">OPEN SOURCE</span>
+            <h2>
+              Code &amp; tools.
+              <br />
+              Built for the community.
+            </h2>
+          </div>
+          <Link className="text-link" href="/open-source">
+            Explore all repos <ArrowRight size={17} />
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {featuredExamples.map((project) => (
+            <Link
+              key={project.slug}
+              className="feature-card group flex flex-col"
+              href={`/open-source/${project.slug}`}
+            >
+              <div className="flex items-center justify-between mb-4">
+                <span className="eyebrow small text-xs">{project.category}</span>
+                 <a href={socials.github} target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                                <path d="M9 18c-4.51 2-5-2-7-2" />
+                              </svg>
+                              GitHub ↗
+                            </a>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+              <p className="text-[var(--text-muted)] text-sm mb-6 flex-grow">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-2 mt-auto">
+                {project.technologies.map((tech) => (
+                  <span key={tech} className="text-xs font-mono px-2 py-1 bg-[var(--bg)] border border-[var(--border)] rounded">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* 6. TÉMOIGNAGES */}
       <section className="shell section" id="testimonials">
         <div className="section-heading">
           <div>
@@ -315,7 +372,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. PROCESSUS */}
+      {/* 7. PROCESSUS */}
       <section className="shell section quickstart">
         <div>
           <span className="eyebrow">HOW I WORK</span>
@@ -359,7 +416,7 @@ export default function Home() {
         </ol>
       </section>
 
-      {/* 7. FAQ */}
+      {/* 8. FAQ */}
       <section className="shell section" id="faq">
         <div className="section-heading">
           <div>
@@ -380,7 +437,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. CTA FINAL */}
+      {/* 9. CTA FINAL */}
       <section className="shell final-cta">
         <span className="eyebrow">READY TO START?</span>
         <h2>

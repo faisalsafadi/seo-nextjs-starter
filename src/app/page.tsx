@@ -312,7 +312,6 @@ export default function Home() {
           </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        // Dans la boucle des featuredExamples
           {featuredExamples.map((project) => (
             <Link
               key={project.slug}

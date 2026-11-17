@@ -1,9 +1,14 @@
-import { ArrowUpRight } from "lucide-react";
 export default function Brand({ compact = false }: { compact?: boolean }) {
   return (
     <span className="brand">
       <span className="brand-mark" aria-hidden="true">
-        <ArrowUpRight size={22} strokeWidth={2.5} />
+        <img
+          src="/images/logo.webp"
+          alt=""
+          width={22}
+          height={22}
+          className="brand-webp"
+        />
       </span>
       {!compact && (
         <span>

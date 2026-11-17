@@ -1,11 +1,12 @@
 import Link from "next/link";
-
 import {
   Code,
   Zap,
   Wrench,
   ArrowRight,
   ArrowUpRight,
+  CheckCircle2,
+  Star,
 } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import {
@@ -16,39 +17,78 @@ import {
   title,
 } from "@/config";
 import { pageMetadata } from "@/lib/seo";
-//export const metadata = pageMetadata(title, "/");
+import { work } from "#site/content";
+
+// --- MÉTADONNÉES SEO ---
 export const metadata = pageMetadata(
-  "Freelance Full-Stack Developer in Marrakech",
+  "Freelance Full-Stack Developer for B2B Systems | Faisal Safadi",
   "/",
-  "Full-stack developer with 12+ years of experience. I build and fix production web systems with Laravel, Next.js, and technical SEO. Based in Marrakech, available worldwide."
+  "Full-stack developer with 12+ years of experience. I build and rescue production web systems with Laravel, Next.js, and technical SEO. Based in Marrakech, available worldwide."
 );
 
-const features = [
+// --- DONNÉES POUR LA PAGE ---
+const services = [
   {
     icon: Code,
     title: "Full-Stack Development",
-    text: "Production-ready applications built with Laravel and Next.js. Type-safe, tested, and designed to scale.",
-    label: "ENGINEERING",
+    description: "Production-ready applications built with Laravel and Next.js. Type-safe, tested, and designed to scale.",
     href: "/contact",
   },
   {
     icon: Zap,
-    title: "Performance & Tech SEO",
-    text: "Core Web Vitals optimization, architecture audits, and technical SEO to ensure your site is fast and visible.",
-    label: "OPTIMIZATION",
+    title: "Performance & Technical SEO",
+    description: "I fix slow sites and poor Core Web Vitals. Your site will be fast, visible, and built to rank.",
     href: "/contact",
   },
   {
     icon: Wrench,
     title: "Legacy System Rescue",
-    text: "Refactoring tangled codebases, migrating outdated stacks, and fixing production bottlenecks without breaking what works.",
-    label: "MAINTENANCE",
+    description: "Refactoring tangled codebases and migrating outdated stacks without downtime.",
     href: "/contact",
   },
 ];
+
+const featuredProjects = [...work]
+  .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0) || a.order - b.order)
+  .slice(0, 3);
+
+const testimonials = [
+  {
+    quote: "Faisal rescued a legacy system that was costing us thousands in lost bookings. He delivered on time, under budget, and the system has been rock solid since.",
+    author: "Operations Director",
+    company: "Luxury Villa Rental Agency, Marrakech",
+  },
+  {
+    quote: "Working with Faisal was a breath of fresh air. He understood the business requirements immediately and translated them into a fast, beautiful, and easy-to-manage website.",
+    author: "Founder",
+    company: "High-End Leather Goods Brand",
+  },
+];
+
+const faqs = [
+  {
+    question: "What is your typical project timeline?",
+    answer: "Timelines vary by scope. A focused technical audit can take 1-2 weeks, while a full-stack application build typically ranges from 6 to 12 weeks. I provide a detailed timeline during our initial consultation.",
+  },
+  {
+    question: "Do you work with clients outside of Morocco?",
+    answer: "Yes. I work remotely with clients worldwide. I am fluent in English, French, and Arabic, and I structure communication to fit your timezone and workflow.",
+  },
+  {
+    question: "What does a 'technical SEO audit' include?",
+    answer: "A technical SEO audit covers Core Web Vitals, crawlability, site architecture, structured data (Schema.org), and indexation issues. You receive a prioritized report with actionable fixes.",
+  },
+  {
+    question: "How do you handle legacy code migrations?",
+    answer: "I start with a thorough diagnostic phase to map dependencies and risks. Migrations are planned in incremental, low-risk stages with clear rollback points, ensuring your business continues to operate without interruption.",
+  },
+];
+
+// --- COMPOSANT ---
 export default function Home() {
   return (
     <main id="main">
+      {/* SCHÉMA JSON-LD (inchangé) */}
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -88,13 +128,13 @@ export default function Home() {
               url: baseURL,
               description: "Freelance full-stack development, legacy system rescue, and technical SEO consulting.",
               areaServed: "Worldwide",
-              founder: {
-                "@id": `${baseURL}/#person`,
-              },
+              founder: { "@id": `${baseURL}/#person` },
             },
           ],
         }}
       />
+
+      {/* 1. HERO */}
       <section className="shell hero">
         <div className="hero-copy">
           <Link className="release-label" href="/about">
@@ -114,12 +154,12 @@ export default function Home() {
             bottlenecks, migration debt, and systems that need to scale.
           </p>
           <div className="hero-buttons">
-            <Link className="button button-blue" href="/work">
-              See my work <ArrowRight size={16} />
+            <Link className="button button-blue" href="/contact">
+              Discuss your project <ArrowRight size={16} />
             </Link>
-            <a className="button button-outline" href="/contact">
-              Contact me <ArrowUpRight size={16} />
-            </a>
+            <Link className="button button-outline" href="/work">
+              Or see my work
+            </Link>
           </div>
           <div className="hero-note">
             <span>Remote-first</span>
@@ -128,13 +168,11 @@ export default function Home() {
         </div>
         <div className="hero-preview">
           <div className="relative overflow-hidden rounded-xl border border-[var(--border)] bg-[#0d1117] p-6 shadow-2xl font-mono text-sm">
-            {/* Barre de fenêtre Mac */}
             <div className="flex gap-2 mb-6">
               <div className="w-3 h-3 rounded-full bg-red-500"></div>
               <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
               <div className="w-3 h-3 rounded-full bg-green-500"></div>
             </div>
-            {/* Code factice */}
             <div className="text-gray-400">
               <p><span className="text-purple-400">const</span> developer = {"{"}</p>
               <p className="pl-4">name: <span className="text-green-400">'Faisal Safadi'</span>,</p>
@@ -151,54 +189,59 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* 2. BANDEAU DE PREUVE SOCIALE */}
       <div className="stack-strip">
         <div className="shell stack-inner">
-          <span>SMALL STACK. SOLID FOUNDATIONS.</span>
+          <span>PROVEN TRACK RECORD</span>
           <div>
-            <strong>◒ Next.js 16</strong>
-            <strong>⚛ React 19</strong>
-            <strong>
-              <b className="ts-mark">TS</b> TypeScript
-            </strong>
-            <strong>≈ Tailwind CSS</strong>
+            <strong>12+ Years Experience</strong>
+            <strong>50+ Projects Delivered</strong>
+            <strong>Available Worldwide</strong>
           </div>
         </div>
       </div>
+
+      {/* 3. SERVICES (RESPONSIVE) */}
       <section className="shell section" id="features">
         <div className="section-heading">
           <div>
             <span className="eyebrow">HOW I CAN HELP</span>
-            Engineering solutions
-            <br />
-            that scale.
+            <h2>
+              Engineering solutions
+              <br />
+              that scale.
+            </h2>
           </div>
           <p>
-            I don't just write code. I solve business problems
+            I don&apos;t just write code. I solve business problems
             <br />
             with maintainable, high-performance systems.
           </p>
         </div>
-        <div className="feature-grid">
-          {features.map(({ icon: Icon, ...feature }, i) => (
+        {/* Grille responsive : 1 col mobile, 3 cols desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {services.map((service, i) => (
             <Link
-              href={feature.href}
+              href={service.href}
               className="feature-card"
-              key={feature.title}
+              key={service.title}
             >
               <div className="feature-top">
                 <span className="feature-icon">
-                  <Icon size={22} strokeWidth={1.65} />
+                  <service.icon size={22} strokeWidth={1.65} />
                 </span>
                 <span>0{i + 1}</span>
               </div>
-              <span className="eyebrow small">{feature.label}</span>
-              <h3>{feature.title}</h3>
-              <p>{feature.text}</p>
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
               <ArrowUpRight className="card-arrow" size={18} />
             </Link>
           ))}
         </div>
       </section>
+
+      {/* 4. PROJETS SÉLECTIONNÉS (LIENS VERS DÉTAIL) */}
       <section className="examples-section">
         <div className="shell section">
           <div className="section-heading">
@@ -214,49 +257,65 @@ export default function Home() {
               Explore all work <ArrowRight size={17} />
             </Link>
           </div>
-          <div className="example-grid">
-            <Link className="example-card" href="/work">
-              <div className="journal-cover" style={{ background: "#e8e4d9", color: "#2d2a26" }}>
-                <div>
-                  TOURISM PORTAL <span>01 / B2B</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featuredProjects.map((project) => (
+              <Link
+                key={project.slug}
+                className="example-card group"
+                href={`/work/${project.slug}`} // <-- LIEN VERS LE DÉTAIL
+              >
+                {project.coverImage && (
+                  <div className="relative w-full aspect-[16/10] overflow-hidden rounded-t-xl">
+                    {/* Utilisez <Image> de Next.js ici pour l'optimisation */}
+                    <img
+                      src={project.coverImage}
+                      alt={project.title}
+                      className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                )}
+                <div className="example-caption">
+                  <div>
+                    <h3>{project.title}</h3>
+                    <p>{project.description}</p>
+                  </div>
+                  <ArrowUpRight size={22} />
                 </div>
-                <strong>
-                  Luxury Villas
-                  <br />
-                  <em>Marrakech.</em>
-                </strong>
-                <span className="cover-orbit" aria-hidden="true">
-                  ✳
-                </span>
-              </div>
-              <div className="example-caption">
-                <div>
-                  <h3>Tourism Portal</h3>
-                  <p>Custom API · Multilingual · Booking Flow</p>
-                </div>
-                <ArrowUpRight size={22} />
-              </div>
-            </Link>
-            <Link className="example-card" href="/work">
-              <div className="product-cover" style={{ background: "#e3e8f0", color: "#1e293b" }}>
-                <span className="product-cover-label">E-COMMERCE / WORDPRESS</span>
-                <strong>
-                  Leather Catalog
-                  <br />
-                  Showcase.
-                </strong>
-              </div>
-              <div className="example-caption">
-                <div>
-                  <h3>Leather Brand</h3>
-                  <p>Custom Post Types · High-Res Performance</p>
-                </div>
-                <ArrowUpRight size={22} />
-              </div>
-            </Link>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* 5. TÉMOIGNAGES */}
+      <section className="shell section" id="testimonials">
+        <div className="section-heading">
+          <div>
+            <span className="eyebrow">TESTIMONIALS</span>
+            <h2>What clients say.</h2>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {testimonials.map((testimonial, i) => (
+            <div key={i} className="p-8 rounded-2xl border border-[var(--border)] bg-[var(--bg-alt)]">
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={18} className="fill-yellow-500 text-yellow-500" />
+                ))}
+              </div>
+              <blockquote className="text-lg italic mb-6">
+                &ldquo;{testimonial.quote}&rdquo;
+              </blockquote>
+              <div>
+                <p className="font-semibold">{testimonial.author}</p>
+                <p className="text-sm text-[var(--text-muted)]">{testimonial.company}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 6. PROCESSUS */}
       <section className="shell section quickstart">
         <div>
           <span className="eyebrow">HOW I WORK</span>
@@ -275,7 +334,7 @@ export default function Home() {
             <div>
               <h3>Diagnose</h3>
               <p>
-                I start by understanding the system, the constraints, and what "fixed" actually means for your business. No assumptions.
+                I start by understanding the system, the constraints, and what &quot;fixed&quot; actually means for your business. No assumptions.
               </p>
             </div>
           </li>
@@ -300,17 +359,39 @@ export default function Home() {
         </ol>
       </section>
 
+      {/* 7. FAQ */}
+      <section className="shell section" id="faq">
+        <div className="section-heading">
+          <div>
+            <span className="eyebrow">COMMON QUESTIONS</span>
+            <h2>Frequently asked questions.</h2>
+          </div>
+        </div>
+        <div className="space-y-4">
+          {faqs.map((faq, i) => (
+            <details key={i} className="group p-6 rounded-xl border border-[var(--border)] bg-[var(--bg-alt)]">
+              <summary className="flex items-center justify-between cursor-pointer font-semibold">
+                {faq.question}
+                <CheckCircle2 size={18} className="text-[var(--text-muted)] group-open:text-[var(--text)] transition-colors" />
+              </summary>
+              <p className="mt-4 text-[var(--text-muted)]">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      {/* 8. CTA FINAL */}
       <section className="shell final-cta">
-        <span className="eyebrow">YOUR IDEA IS NEXT</span>
+        <span className="eyebrow">READY TO START?</span>
         <h2>
-          Build something
+          Let&apos;s build something
           <br />
-          worth finding.
+          that works.
         </h2>
-        <a className="button button-blue" href="/contact">
-          Let's work together <ArrowUpRight size={17} />
-        </a>
-        <p>Available for freelance, consulting, and interesting projects.</p>
+        <Link className="button button-blue" href="/contact">
+          Get in touch <ArrowUpRight size={17} />
+        </Link>
+        <p>Available for freelance, consulting, and technical rescues.</p>
       </section>
     </main>
   );

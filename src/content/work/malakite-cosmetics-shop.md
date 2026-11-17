@@ -68,4 +68,4 @@ The e-commerce platform successfully achieved all objectives:
 The platform is now ready to serve as a powerful sales channel for Malakite's natural cosmetics line, connecting Moroccan craftsmanship with international customers. 🌿🇲🇦✨
 
 ---
-** end of malakite-cosmetics-shop.md **
+

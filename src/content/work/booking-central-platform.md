@@ -89,4 +89,4 @@ The booking central successfully achieved all objectives:
 The platform is now ready to serve as a powerful tool for the tourism company's international vacation rental business. 🌍✈️
 
 ---
-** end of booking-central-platform.md **
+

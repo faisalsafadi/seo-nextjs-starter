@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { work } from "#site/content";
 //import { pageMetadata } from "@/lib/seo";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import { contactEmail } from "@/config";
+ 
 import { pageMetadata, breadcrumbs, caseStudySchema } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
 
@@ -85,6 +86,23 @@ export default async function WorkDetail({ params }: { params: Promise<{ slug: s
           </div>
         </div>
       </section>
+
+      {project.coverImage && (
+        <section className="shell" style={{ marginTop: "2rem", marginBottom: "3rem" }}>
+          <div className="relative w-full aspect-[3/1] overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-alt)]">
+            <Image
+              src={project.coverImage}
+              alt={project.title}
+              fill
+              className="object-cover"
+              priority
+            />
+            {/* Optionnel : un dégradé subtil pour la lisibilité */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+          </div>
+        </section>
+      )}
+
 
       <section className="shell content-shell">
         {/* Le contenu Markdown est injecté ici avec la classe 'prose' pour le style */}

@@ -53,4 +53,3 @@ The project successfully achieved its objectives:
 *   **Client Satisfaction:** The client was highly satisfied with the quality of digital communication supports and the achievement of project goals.
 
 ---
-** end of signage-maroc-website.md **

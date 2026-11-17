@@ -16,8 +16,12 @@ import {
   title,
 } from "@/config";
 import { pageMetadata } from "@/lib/seo";
-export const metadata = pageMetadata(title, "/");
-
+//export const metadata = pageMetadata(title, "/");
+export const metadata = pageMetadata(
+  "Freelance Full-Stack Developer in Marrakech",
+  "/",
+  "Full-stack developer with 12+ years of experience. I build and fix production web systems with Laravel, Next.js, and technical SEO. Based in Marrakech, available worldwide."
+);
 
 const features = [
   {
@@ -48,20 +52,47 @@ export default function Home() {
       <JsonLd
         data={{
           "@context": "https://schema.org",
-          "@type": "WebSite",
-          name: siteName,
-          url: baseURL,
-        }}
-      />
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Person",
-          name: "Faisal Safadi",
-          url: baseURL,
-          jobTitle: "Web Developer & SEO",
-          sameAs: [mainSiteURL],
-          email: contactEmail,
+          "@graph": [
+            {
+              "@type": "WebSite",
+              "@id": `${baseURL}/#website`,
+              url: baseURL,
+              name: siteName,
+              description: "Full-stack developer with 12+ years of experience.",
+            },
+            {
+              "@type": "Person",
+              "@id": `${baseURL}/#person`,
+              name: "Faisal Safadi",
+              url: baseURL,
+              jobTitle: "Full-Stack Developer & Technical SEO",
+              sameAs: [mainSiteURL],
+              email: contactEmail,
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Marrakech",
+                addressCountry: "MA",
+              },
+              knowsAbout: [
+                "Next.js",
+                "Laravel",
+                "TypeScript",
+                "Technical SEO",
+                "Performance Optimization",
+              ],
+            },
+            {
+              "@type": "ProfessionalService",
+              "@id": `${baseURL}/#service`,
+              name: "Faisal Safadi — Full-Stack Development & SEO",
+              url: baseURL,
+              description: "Freelance full-stack development, legacy system rescue, and technical SEO consulting.",
+              areaServed: "Worldwide",
+              founder: {
+                "@id": `${baseURL}/#person`,
+              },
+            },
+          ],
         }}
       />
       <section className="shell hero">

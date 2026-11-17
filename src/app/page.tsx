@@ -178,15 +178,53 @@ export default function Home() {
               <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
               <div className="w-3 h-3 rounded-full bg-green-500"></div>
             </div>
-            <div className="text-gray-400">
-              <p><span className="text-purple-400">const</span> developer = {"{"}</p>
-              <p className="pl-4">name: <span className="text-green-400">'Faisal Safadi'</span>,</p>
-              <p className="pl-4">role: <span className="text-green-400">'Full-Stack Engineer'</span>,</p>
-              <p className="pl-4">experience: <span className="text-blue-400">12</span>,</p>
-              <p className="pl-4">stack: [<span className="text-green-400">'Next.js'</span>, <span className="text-green-400">'Laravel'</span>, <span className="text-green-400">'SEO'</span>],</p>
-              <p className="pl-4">availableForWork: <span className="text-orange-400">true</span>,</p>
-              <p className="pl-4">problemSolver: <span className="text-orange-400">true</span>,</p>
-              <p>{"}"};</p>
+            <div className="text-gray-400 font-mono text-sm leading-relaxed">
+              <p>
+                <span className="text-purple-400">const</span>{' '}
+                <span className="text-yellow-300">developer</span> = {'{'}
+              </p>
+
+              <p className="pl-4">
+                name: <span className="text-green-400">'Faisal Safadi'</span>,
+              </p>
+              <p className="pl-4">
+                role: <span className="text-green-400">'Full-Stack Engineer'</span>,
+              </p>
+              <p className="pl-4">
+                experience: <span className="text-blue-400">12</span>,{' '}
+                <span className="text-gray-500">// years</span>
+              </p>
+
+              <p className="pl-4">
+                stack: {'{'}
+              </p>
+              <p className="pl-8">
+                core: [<span className="text-green-400">'Next.js'</span>,{' '}
+                <span className="text-green-400">'TypeScript'</span>,{' '}
+                <span className="text-green-400">'Laravel'</span>],
+              </p>
+              <p className="pl-8">
+                data: [<span className="text-green-400">'PostgreSQL'</span>,{' '}
+                <span className="text-green-400">'Redis'</span>],
+              </p>
+              <p className="pl-8">
+                infra: [<span className="text-green-400">'Docker'</span>,{' '}
+                <span className="text-green-400">'Vercel'</span>],
+              </p>
+              <p className="pl-8">
+                expertise: [<span className="text-green-400">'SEO'</span>,{' '}
+                <span className="text-green-400">'Performance'</span>],
+              </p>
+              <p className="pl-4">{'}'},</p>
+
+              <p className="pl-4">
+                availableForWork: <span className="text-orange-400">true</span>,
+              </p>
+              <p className="pl-4">
+                problemSolver: <span className="text-orange-400">true</span>,
+              </p>
+
+              <p>{'}'};</p>
             </div>
           </div>
           <div className="preview-footnote mt-4">

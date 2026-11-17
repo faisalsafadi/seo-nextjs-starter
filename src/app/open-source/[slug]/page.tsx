@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { examples } from "#site/content";
 //import { pageMetadata } from "@/lib/seo";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import { contactEmail } from "@/config";
 import Image from "next/image";
 import { pageMetadata, breadcrumbs, caseStudySchema } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
@@ -16,11 +15,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const { slug } = await params;
     const project = examples.find((p) => p.slug === slug);
 
-    if (!project) return pageMetadata("Not Found", "/examples", "Project not found");
+    if (!project) return pageMetadata("Not Found", "/open-source", "Project not found");
 
     return pageMetadata(
         project.title,
-        `/examples/${project.slug}`,
+        `/open-source/${project.slug}`,
         project.description
     );
 }
@@ -37,15 +36,17 @@ export default async function ExampleDetail({ params }: { params: Promise<{ slug
                 data={caseStudySchema({
                     title: project.title,
                     description: project.description,
-                    path: `/examples/${project.slug}`,
+                    path: `/open-source/${project.slug}`,
                     date: project.date,
                     technologies: project.technologies,
+                    parentName: "Open Source",
+                    parentPath: "/open-source",
                 })}
             />
             <section className="shell page-hero" style={{ paddingBottom: "2rem" }}>
                 <nav className="breadcrumb" aria-label="Breadcrumb" style={{ marginBottom: "2rem" }}>
-                    <Link href="/examples" className="flex items-center gap-2 text-sm text-[var(--text-muted)] hover:text-[var(--text)] transition-colors">
-                        <ArrowLeft size={14} /> Back to Examples
+                    <Link href="/open-source" className="flex items-center gap-2 text-sm text-[var(--text-muted)] hover:text-[var(--text)] transition-colors">
+                        <ArrowLeft size={14} /> Back to Open Source
                     </Link>
                 </nav>
 
@@ -104,9 +105,9 @@ export default async function ExampleDetail({ params }: { params: Promise<{ slug
 
             <section className="shell section final-cta" style={{ borderTop: "1px solid var(--border)" }}>
                 <h2>Found a bug or want to contribute?</h2>
-                <a className="button button-outline" href={`mailto:${contactEmail}`}>
+                <Link className="button button-outline" href="/contact">
                     Get in touch <ArrowUpRight size={17} />
-                </a>
+                </Link>
             </section>
         </main>
     );

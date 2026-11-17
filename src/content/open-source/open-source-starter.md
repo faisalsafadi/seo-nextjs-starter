@@ -7,7 +7,7 @@ technologies: ["Next.js", "TypeScript", "Tailwind"]
 featured: true
 order: 1
 githubURL: "https://github.com/faisalsafadi/seo-nextjs-starter"
-coverImage: "/images/examples/starter-cover.png"
+coverImage: "/images/open-source/starter-cover.png"
 ---
 
 ## About this project

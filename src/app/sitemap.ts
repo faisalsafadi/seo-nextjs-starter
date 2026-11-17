@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/",
     "/about",
     "/work",
-    "/examples",
+    "/open-source",
     "/contact",
   ].map((path) => ({
     url: new URL(path, baseURL).href,
@@ -28,9 +28,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  // 3. Démos dynamiques (Examples)
+  // 3. Démos dynamiques (open-source)
   const exampleRoutes = examples.map((project) => ({
-    url: new URL(`/examples/${project.slug}`, baseURL).href,
+    url: new URL(`/open-source/${project.slug}`, baseURL).href,
     lastModified: new Date(project.date).toISOString().split("T")[0],
     changeFrequency: "monthly" as const,
     priority: 0.7,

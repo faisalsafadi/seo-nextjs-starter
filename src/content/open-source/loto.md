@@ -7,7 +7,7 @@ technologies: ["JavaScript", "Node.js", "HTML/CSS"]
 featured: true
 order: 2
 githubURL: "https://github.com/faisalsafadi/loto"
-coverImage: "/images/examples/loto-cover.png"
+coverImage: "/images/open-source/loto-cover.png"
 ---
 
 ## The Context

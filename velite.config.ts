@@ -5,7 +5,7 @@ const baseSchema = s.object({
   title: s.string().max(99),
   description: s.string().max(200),
   date: s.isodate(),
-  category: s.enum(["Full-Stack", "Frontend", "Backend", "SEO", "CMS", "CMS & eCommerce","Mobile & Full-Stack","CMS & Directory","CMS & E-Commerce Showcase","CMS & Web Design"]),
+  category: s.enum(["Full-Stack", "Frontend", "Backend", "SEO", "CMS", "CMS & eCommerce","Mobile & Full-Stack","CMS & Directory","CMS & E-Commerce Showcase","CMS & Web Design","Full-Stack Development","E-commerce Development"]),
   technologies: s.array(s.string()).default([]),
   featured: s.boolean().default(false),
   order: s.number().default(0),
@@ -20,6 +20,6 @@ export default defineConfig({
   output: { data: ".velite", assets: "public/static", base: "/static/", clean: true },
   collections: {
     work: defineCollection({ name: "Work", pattern: "work/**/*.md", schema: baseSchema }),
-    examples: defineCollection({ name: "Example", pattern: "examples/**/*.md", schema: baseSchema }),
+    examples: defineCollection({ name: "Example", pattern: "open-source/**/*.md", schema: baseSchema }),
   },
 });

@@ -67,7 +67,7 @@ export default function About() {
           <a href={mainSiteURL} target="_blank" rel="noopener noreferrer">
             Visit faisalsafadi.com ↗
           </a>
-          <Link href="/examples">Browse examples →</Link>
+          <Link href="/open-source">Explore open source →</Link>
         </div>
       </article>
     </main>

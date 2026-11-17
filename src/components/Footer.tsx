@@ -11,8 +11,9 @@ export default function Footer() {
         </div>
         <div className="footer-links">
           <Link href="/work">Work</Link>
+          <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>
-          <Link href="/examples">Examples</Link>
+          <Link href="/open-source">Open Source</Link>
         </div>
       </div>
       <div className="shell footer-bottom">

@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import {
   baseURL,
-  mainSiteURL,
   description as defaultDescription,
   indexable,
   siteName,
+  mainSiteURL, // <-- AJOUTÉ ICI
 } from "@/config";
-
-
 
 export function pageMetadata(
   title: string,
@@ -58,12 +56,16 @@ export function caseStudySchema({
   path,
   date,
   technologies,
+  parentName = "Work",       // <-- Valeur par défaut
+  parentPath = "/work",      // <-- Valeur par défaut
 }: {
   title: string;
   description: string;
   path: string;
   date: string;
   technologies: string[];
+  parentName?: string;
+  parentPath?: string;
 }) {
   const url = new URL(path, baseURL).href;
   const personId = `${baseURL}/#person`;
@@ -109,10 +111,10 @@ export function caseStudySchema({
         },
         sameAs: [mainSiteURL],
       },
-      // 4. Le fil d'Ariane (tu as déjà la fonction, on la réutilise)
+      // 4. Le fil d'Ariane (dynamique)
       breadcrumbs([
         { name: "Home", path: "/" },
-        { name: "Work", path: "/work" },
+        { name: parentName, path: parentPath },
         { name: title, path: path },
       ]),
     ],

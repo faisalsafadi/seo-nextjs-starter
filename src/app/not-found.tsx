@@ -14,8 +14,8 @@ export default function NotFound() {
         <Link className="button button-blue" href="/">
           Back to home
         </Link>
-        <Link className="button button-outline" href="/examples">
-          Browse examples
+        <Link className="button button-outline" href="/open-source">
+          Open Source
         </Link>
 
 

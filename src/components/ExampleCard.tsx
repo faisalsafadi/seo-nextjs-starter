@@ -22,7 +22,7 @@ export default function ExampleCard({ title, description, slug, category, techno
       transition={{ duration: 0.4, delay: index * 0.1 }}
       className="h-full"
     >
-      <Link href={`/examples/${slug}`} className="group block h-full">
+      <Link href={`/open-source/${slug}`} className="group block h-full">
         <div className="flex flex-col h-full p-6 rounded-xl border border-[var(--border)] bg-[var(--bg-alt)] transition-all duration-300 hover:border-[var(--text-muted)] hover:shadow-lg">
           
           <div className="flex items-center justify-between mb-4">

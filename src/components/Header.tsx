@@ -25,6 +25,7 @@ export default function Header({ contactEmail }: { contactEmail: string }) {
 
   const navigation: [string, string][] = [
     ["Work", "/work"],
+    ["Open Source", "/open-source"],
     ["About", "/about"],
   ];
 

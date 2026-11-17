@@ -3,8 +3,8 @@ import { examples } from "#site/content";
 import ExampleCard from "@/components/ExampleCard";
 
 export const metadata = pageMetadata(
-  "Examples",
-  "/examples",
+  "Open Source",
+  "/open-source",
   "Open-source tools, experimental projects, and technical demos by Faisal Safadi.",
 );
 
@@ -21,7 +21,7 @@ export default function Examples() {
           and technical demos.
         </h1>
         <p>
-          A collection of side projects, open-source repositories, and code experiments. 
+          A collection of side projects, open-source repositories, and code experiments.
           Most of these are available on my GitHub.
         </p>
       </section>

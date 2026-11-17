@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import {
   baseURL,
+  mainSiteURL,
   description as defaultDescription,
   indexable,
   siteName,
 } from "@/config";
+
+
 
 export function pageMetadata(
   title: string,
@@ -46,5 +49,72 @@ export function breadcrumbs(items: { name: string; path: string }[]) {
       name: item.name,
       item: new URL(item.path, baseURL).href,
     })),
+  };
+}
+
+export function caseStudySchema({
+  title,
+  description,
+  path,
+  date,
+  technologies,
+}: {
+  title: string;
+  description: string;
+  path: string;
+  date: string;
+  technologies: string[];
+}) {
+  const url = new URL(path, baseURL).href;
+  const personId = `${baseURL}/#person`;
+  const workId = `${url}#creativework`;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      // 1. L'Article (la page que Google lit)
+      {
+        "@type": "TechArticle",
+        "@id": `${url}#article`,
+        headline: title,
+        description: description,
+        datePublished: date,
+        dateModified: date,
+        author: { "@id": personId },
+        publisher: { "@id": personId },
+        mainEntityOfPage: { "@id": url },
+        about: { "@id": workId },
+      },
+      // 2. Le CreativeWork (le projet décrit)
+      {
+        "@type": "CreativeWork",
+        "@id": workId,
+        name: title,
+        description: description,
+        dateCreated: date,
+        keywords: technologies.join(", "),
+        creator: { "@id": personId },
+      },
+      // 3. La Person (toi)
+      {
+        "@type": "Person",
+        "@id": personId,
+        name: "Faisal Safadi",
+        url: baseURL,
+        jobTitle: "Full-Stack Developer & Technical SEO",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Marrakech",
+          addressCountry: "MA",
+        },
+        sameAs: [mainSiteURL],
+      },
+      // 4. Le fil d'Ariane (tu as déjà la fonction, on la réutilise)
+      breadcrumbs([
+        { name: "Home", path: "/" },
+        { name: "Work", path: "/work" },
+        { name: title, path: path },
+      ]),
+    ],
   };
 }

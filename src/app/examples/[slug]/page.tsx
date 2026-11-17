@@ -5,7 +5,7 @@ import { examples } from "#site/content";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { contactEmail } from "@/config";
 import Image from "next/image";
-import { pageMetadata, breadcrumbs } from "@/lib/seo";
+import { pageMetadata, breadcrumbs, caseStudySchema } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
 
 export async function generateStaticParams() {
@@ -34,11 +34,13 @@ export default async function ExampleDetail({ params }: { params: Promise<{ slug
     return (
         <main id="main">
             <JsonLd
-                data={breadcrumbs([
-                    { name: "Home", path: "/" },
-                    { name: "Examples", path: "/examples" },
-                    { name: project.title, path: `/examples/${project.slug}` },
-                ])}
+                data={caseStudySchema({
+                    title: project.title,
+                    description: project.description,
+                    path: `/examples/${project.slug}`,
+                    date: project.date,
+                    technologies: project.technologies,
+                })}
             />
             <section className="shell page-hero" style={{ paddingBottom: "2rem" }}>
                 <nav className="breadcrumb" aria-label="Breadcrumb" style={{ marginBottom: "2rem" }}>

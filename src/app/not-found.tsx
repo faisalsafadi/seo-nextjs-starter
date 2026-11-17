@@ -18,7 +18,7 @@ export default function NotFound() {
           Browse examples
         </Link>
 
-// Choix 2 — vers votre site principal
+
         <a className="button button-outline" href="https://faisalsafadi.com">
           Visit faisalsafadi.com
         </a>

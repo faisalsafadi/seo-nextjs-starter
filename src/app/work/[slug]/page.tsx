@@ -4,7 +4,7 @@ import { work } from "#site/content";
 //import { pageMetadata } from "@/lib/seo";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { contactEmail } from "@/config";
-import { pageMetadata, breadcrumbs } from "@/lib/seo";
+import { pageMetadata, breadcrumbs, caseStudySchema } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
 
 
@@ -40,12 +40,16 @@ export default async function WorkDetail({ params }: { params: Promise<{ slug: s
   return (
     <main id="main">
       <JsonLd
-        data={breadcrumbs([
-          { name: "Home", path: "/" },
-          { name: "Work", path: "/work" },
-          { name: project.title, path: `/work/${project.slug}` },
-        ])}
+        data={caseStudySchema({
+          title: project.title,
+          description: project.description,
+          path: `/work/${project.slug}`,
+          date: project.date,
+          technologies: project.technologies,
+        })}
       />
+
+
       <section className="shell page-hero" style={{ paddingBottom: "2rem" }}>
         <nav className="breadcrumb" aria-label="Breadcrumb" style={{ marginBottom: "2rem" }}>
           <Link href="/work" className="flex items-center gap-2 text-sm text-[var(--text-muted)] hover:text-[var(--text)] transition-colors">

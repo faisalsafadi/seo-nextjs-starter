@@ -224,6 +224,7 @@ p {
 .brand-light {
   font-weight: 400;
   color: var(--muted);
+  display: block;
 }
 .navigation {
   margin-left: auto;
@@ -1344,6 +1345,7 @@ p {
   }
   .brand-light {
     font-size: 10px;
+    
   }
   .feature-grid {
     grid-template-columns: 1fr;

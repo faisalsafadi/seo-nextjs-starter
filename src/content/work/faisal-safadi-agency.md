@@ -6,7 +6,7 @@ category: "Agency Services"
 technologies: ["WordPress", "PHP", "HTML5", "CSS3", "JavaScript", "SEO"]
 featured: true
 order: 9
-coverImage: "/images/work/faisal-agency.jpg"
+coverImage: "/images/work/faisal-agency.png"
 ---
 
 ## The Context

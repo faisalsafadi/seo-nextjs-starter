@@ -6,7 +6,7 @@ category: "Frontend"
 technologies: ["HTML", "Bootstrap", "JavaScript"]
 featured: true
 order: 8
-githubURL: "https://github.com/faisalsafadi/dupont-peinture-template"
+githubURL: "https://github.com/faisalsafadi/faisalsafadi.github.io"
 coverImage: "/images/open-source/trades-cover.png"
 ---
 
@@ -43,6 +43,6 @@ The project serves as an accessible entry point for local tradespeople:
 
 
 ## Demo
-https://github.com/faisalsafadi/dupont-peinture-template
+https://faisalsafadi.github.io/dupont_peinture/
 ---
  

@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: { default: siteName, template: `%s | ${siteName}` },
   description,
   robots: { index: indexable, follow: true },
+  verification: {
+    google: "b71n4GlEH4GlWrhmpqD-msmnfLQ6Asn8K66NYDuQuxc", 
+  },
 };
 
 const themeScript = `try{const t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch{}`;

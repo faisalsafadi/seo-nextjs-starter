@@ -6,9 +6,9 @@ import { baseURL, mainSiteURL, contactEmail } from "@/config";
 
 
 export const metadata = pageMetadata(
-  "About",
+  "About — Full-Stack Developer & Technical SEO",
   "/about",
-  "About Faisal Safadi — web developer specialized in Next.js, Laravel, and technical SEO.",
+  "Faisal Safadi — full-stack developer specialized in Next.js, Laravel and technical SEO. 5+ years building B2B systems that scale.",
 );
 
 export default function About() {
@@ -63,8 +63,8 @@ export default function About() {
           how I can help.
         </p>
         <div className="inline-links">
-          <a href="/contact">Contact me ↗</a>
-          <a href={mainSiteURL} target="_blank" rel="noopener noreferrer">
+          <Link href="/contact">Contact me ↗</Link>
+          <a href={mainSiteURL} target="_blank" rel="noopener">
             Visit faisalsafadi.com ↗
           </a>
           <Link href="/open-source">Explore open source →</Link>

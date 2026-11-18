@@ -7,6 +7,8 @@ import {
   socials 
 } from "@/config";
 import { pageMetadata } from "@/lib/seo";
+import Link from "next/link";
+
 
 export const metadata = pageMetadata(
   "Contact",
@@ -33,7 +35,7 @@ export default function Contact() {
       <section className="shell content-shell">
         <div className="feature-grid">
           {/* Email */}
-          <a href={`mailto:${contactEmail}`} className="feature-card">
+          <Link href={`mailto:${contactEmail}`} className="feature-card">
             <div className="feature-top">
               <span className="feature-icon">
                 <Mail size={22} strokeWidth={1.65} />
@@ -42,10 +44,10 @@ export default function Contact() {
             <span className="eyebrow small">EMAIL</span>
             <h3>{contactEmail}</h3>
             <p>Best for detailed project briefs and formal requests.</p>
-          </a>
+          </Link>
 
           {/* WhatsApp */}
-          <a href={whatsappURL} target="_blank" rel="noopener noreferrer" className="feature-card">
+          <Link href={whatsappURL} target="_blank" rel="noopener noreferrer" className="feature-card">
             <div className="feature-top">
               <span className="feature-icon">
                 <MessageCircle size={22} strokeWidth={1.65} />
@@ -54,10 +56,10 @@ export default function Contact() {
             <span className="eyebrow small">WHATSAPP</span>
             <h3>{phoneNumber}</h3>
             <p>Quick questions and fast back-and-forth.</p>
-          </a>
+          </Link>
 
           {/* Website */}
-          <a href={mainSiteURL} target="_blank" rel="noopener noreferrer" className="feature-card">
+          <a href={mainSiteURL} target="_blank" rel="noopener" className="feature-card">
             <div className="feature-top">
               <span className="feature-icon">
                 <Globe size={22} strokeWidth={1.65} />

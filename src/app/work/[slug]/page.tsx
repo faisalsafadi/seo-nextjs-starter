@@ -15,7 +15,11 @@ export async function generateStaticParams() {
 }
 
 // Génère les métadonnées SEO dynamiquement
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const project = work.find((p) => p.slug === slug);
 
@@ -26,7 +30,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return pageMetadata(
     project.title,
     `/work/${project.slug}`,
-    project.description
+    project.description,
+    {
+      keywords: project.technologies, // ✅ bonus : les technos comme keywords
+      type: "article",
+    }
   );
 }
 
@@ -92,7 +100,7 @@ export default async function WorkDetail({ params }: { params: Promise<{ slug: s
           <div className="relative w-full aspect-[3/1] overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-alt)]">
             <Image
               src={project.coverImage}
-              alt={project.title}
+              alt={`${project.title} — case study by Faisal Safadi`}
               fill
               className="object-cover"
               priority

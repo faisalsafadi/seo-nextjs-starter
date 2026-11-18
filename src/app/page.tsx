@@ -17,15 +17,15 @@ import {
   socials,
 } from "@/config";
 
-
+import Image from "next/image";
 
 import { pageMetadata } from "@/lib/seo";
 import { work, examples } from "#site/content"; // <-- Ajout de examples
 
 export const metadata = pageMetadata(
-  "Freelance Full-Stack Developer for B2B Systems | Faisal Safadi",
+  "Full-Stack Developer for B2B Systems",
   "/",
-  "Full-stack developer with 12+ years of experience. I build and rescue production web systems with Laravel, Next.js, and technical SEO. Based in Marrakech, available worldwide."
+  "12+ years building and rescuing production web systems with Laravel, Next.js and technical SEO. Freelance, based in Marrakech, working worldwide."
 );
 
 // --- DONNÉES ---
@@ -104,6 +104,13 @@ export default function Home() {
               url: baseURL,
               name: siteName,
               description: "Full-stack developer with 12+ years of experience.",
+              publisher: { "@id": `${baseURL}/#person` },
+              // ✨ ajout : indique à Google la structure du site
+              potentialAction: {
+                "@type": "SearchAction",
+                target: `${baseURL}/work?q={search_term_string}`,
+                "query-input": "required name=search_term_string",
+              },
             },
             {
               "@type": "Person",
@@ -131,9 +138,37 @@ export default function Home() {
               "@id": `${baseURL}/#service`,
               name: "Faisal Safadi — Full-Stack Development & SEO",
               url: baseURL,
-              description: "Freelance full-stack development, legacy system rescue, and technical SEO consulting.",
+              description:
+                "Freelance full-stack development, legacy system rescue, and technical SEO consulting.",
               areaServed: "Worldwide",
               founder: { "@id": `${baseURL}/#person` },
+              // ✨ ajout : lie les 3 services
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "Services",
+                itemListElement: services.map((s) => ({
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: s.title,
+                    description: s.description,
+                    provider: { "@id": `${baseURL}/#person` },
+                  },
+                })),
+              },
+            },
+            // ✨ LE GROS GAIN : FAQPage
+            {
+              "@type": "FAQPage",
+              "@id": `${baseURL}/#faq`,
+              mainEntity: faqs.map((faq) => ({
+                "@type": "Question",
+                name: faq.question,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: faq.answer,
+                },
+              })),
             },
           ],
         }}
@@ -319,9 +354,11 @@ export default function Home() {
               >
                 {project.coverImage && (
                   <div className="relative w-full aspect-[16/10] overflow-hidden rounded-t-xl">
-                    <img
+                    <Image
                       src={project.coverImage}
-                      alt={project.title}
+                      alt={`${project.title} — case study by Faisal Safadi`}
+                      width={1200}
+                      height={750}
                       className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>

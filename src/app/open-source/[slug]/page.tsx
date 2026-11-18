@@ -6,21 +6,32 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { pageMetadata, breadcrumbs, caseStudySchema } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
+import { openSourceSchema } from "@/lib/seo";
+
 
 export async function generateStaticParams() {
     return examples.map((project) => ({ slug: project.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
     const { slug } = await params;
     const project = examples.find((p) => p.slug === slug);
 
-    if (!project) return pageMetadata("Not Found", "/open-source", "Project not found");
+    if (!project)
+        return pageMetadata("Not Found", "/open-source", "Project not found");
 
     return pageMetadata(
         project.title,
         `/open-source/${project.slug}`,
-        project.description
+        project.description,
+        {
+            keywords: project.technologies,
+            type: "article",
+        }
     );
 }
 
@@ -33,14 +44,14 @@ export default async function ExampleDetail({ params }: { params: Promise<{ slug
     return (
         <main id="main">
             <JsonLd
-                data={caseStudySchema({
+                data={openSourceSchema({
                     title: project.title,
                     description: project.description,
                     path: `/open-source/${project.slug}`,
                     date: project.date,
                     technologies: project.technologies,
-                    parentName: "Open Source",
-                    parentPath: "/open-source",
+                    githubURL: project.githubURL,
+                    liveURL: project.liveURL,
                 })}
             />
             <section className="shell page-hero" style={{ paddingBottom: "2rem" }}>
@@ -88,7 +99,7 @@ export default async function ExampleDetail({ params }: { params: Promise<{ slug
                     <div className="relative w-full aspect-[3/1] overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-alt)]">
                         <Image
                             src={project.coverImage}
-                            alt={project.title}
+                            alt={`${project.title} — case study by Faisal Safadi`}
                             fill
                             className="object-cover"
                             priority

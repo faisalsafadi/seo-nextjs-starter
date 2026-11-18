@@ -4,11 +4,14 @@ import { pageMetadata } from "@/lib/seo";
 import { work } from "#site/content";
 import { ArrowRight } from "lucide-react";
 import WorkCard from "@/components/WorkCard";
+import JsonLd from "@/components/JsonLd";
+import { baseURL, siteName } from "@/config";
+
 
 export const metadata = pageMetadata(
-  "Work",
+  "Case Studies — Full-Stack Projects", // 38 chars + 16 = 54 ✅
   "/work",
-  "Selected case studies by Faisal Safadi — full-stack development, custom CMS, and technical SEO.",
+  "Selected case studies: B2B SaaS, custom CMS and internal tools built with Next.js, Laravel and PostgreSQL. Problem, approach, result." // 138 ✅
 );
 
 export default function Work() {
@@ -16,6 +19,32 @@ export default function Work() {
 
   return (
     <main id="main">
+      <JsonLd
+  data={{
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": `${baseURL}/work#page`,
+        url: `${baseURL}/work`,
+        name: "Case Studies — Full-Stack Projects",
+        description:
+          "Selected case studies by Faisal Safadi — full-stack development, custom CMS and technical SEO.",
+        isPartOf: { "@id": `${baseURL}/#website` },
+        about: { "@id": `${baseURL}/#person` },
+        mainEntity: {
+          "@type": "ItemList",
+          itemListElement: sortedWork.map((project, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            url: `${baseURL}/work/${project.slug}`,
+            name: project.title,
+          })),
+        },
+      },
+    ],
+  }}
+/>
       <section className="shell page-hero">
         <span className="eyebrow">SELECTED WORK</span>
         <h1>

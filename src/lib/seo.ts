@@ -4,34 +4,69 @@ import {
   description as defaultDescription,
   indexable,
   siteName,
-  mainSiteURL, // <-- AJOUTÉ ICI
+  mainSiteURL,
 } from "@/config";
+
+const DESC_MAX = 158; // marge sous les 160 pour éviter la troncature en SERP
+
+function clamp(text: string, max = DESC_MAX): string {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max - 1);
+  const lastSpace = cut.lastIndexOf(" ");
+  return (lastSpace > max * 0.7 ? cut.slice(0, lastSpace) : cut) + "…";
+}
+
+type PageMetaOptions = {
+  keywords?: string[];
+  ogImage?: string;
+  noindex?: boolean;
+  type?: "website" | "article" | "profile";
+  locale?: string;
+};
 
 export function pageMetadata(
   title: string,
   path: string,
   description = defaultDescription,
+  options: PageMetaOptions = {},
 ): Metadata {
+  const {
+    keywords,
+    ogImage,
+    noindex = false,
+    type = "website",
+    locale = "en_US",
+  } = options;
+
   const url = new URL(path, baseURL).href;
-  const image = new URL(`/api/og?title=${encodeURIComponent(title)}`, baseURL)
-    .href;
+  const image =
+    ogImage ??
+    new URL(`/api/og?title=${encodeURIComponent(title)}`, baseURL).href;
+
+  const safeDescription = clamp(description);
+  const fullTitle = `${title} | ${siteName}`;
+
   return {
-    title: { absolute: `${title} | ${siteName}` },
-    description,
+    title: { absolute: fullTitle },
+    description: safeDescription,
+    keywords,
     alternates: { canonical: url },
-    robots: { index: indexable, follow: true },
+    robots: noindex
+      ? { index: false, follow: false }
+      : { index: indexable, follow: true },
     openGraph: {
-      title,
-      description,
+      title: fullTitle,          // ✅ aligné avec <title>
+      description: safeDescription,
       url,
       siteName,
-      type: "website",
+      type,
+      locale,
       images: [{ url: image, width: 1200, height: 630, alt: title }],
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
+      title: fullTitle,
+      description: safeDescription,
       images: [image],
     },
   };
@@ -56,8 +91,8 @@ export function caseStudySchema({
   path,
   date,
   technologies,
-  parentName = "Work",       // <-- Valeur par défaut
-  parentPath = "/work",      // <-- Valeur par défaut
+  parentName = "Work",
+  parentPath = "/work",
 }: {
   title: string;
   description: string;
@@ -74,12 +109,11 @@ export function caseStudySchema({
   return {
     "@context": "https://schema.org",
     "@graph": [
-      // 1. L'Article (la page que Google lit)
       {
         "@type": "TechArticle",
         "@id": `${url}#article`,
         headline: title,
-        description: description,
+        description,
         datePublished: date,
         dateModified: date,
         author: { "@id": personId },
@@ -87,17 +121,15 @@ export function caseStudySchema({
         mainEntityOfPage: { "@id": url },
         about: { "@id": workId },
       },
-      // 2. Le CreativeWork (le projet décrit)
       {
         "@type": "CreativeWork",
         "@id": workId,
         name: title,
-        description: description,
+        description,
         dateCreated: date,
         keywords: technologies.join(", "),
         creator: { "@id": personId },
       },
-      // 3. La Person (toi)
       {
         "@type": "Person",
         "@id": personId,
@@ -111,11 +143,67 @@ export function caseStudySchema({
         },
         sameAs: [mainSiteURL],
       },
-      // 4. Le fil d'Ariane (dynamique)
       breadcrumbs([
         { name: "Home", path: "/" },
         { name: parentName, path: parentPath },
-        { name: title, path: path },
+        { name: title, path },
+      ]),
+    ],
+  };
+}
+
+export function openSourceSchema({
+  title,
+  description,
+  path,
+  date,
+  technologies,
+  githubURL,
+  liveURL,
+  license = "MIT",
+}: {
+  title: string;
+  description: string;
+  path: string;
+  date: string;
+  technologies: string[];
+  githubURL?: string;
+  liveURL?: string;
+  license?: string;
+}) {
+  const url = new URL(path, baseURL).href;
+  const personId = `${baseURL}/#person`;
+  const softwareId = `${url}#software`;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareSourceCode",
+        "@id": softwareId,
+        name: title,
+        description,
+        dateCreated: date,
+        programmingLanguage: technologies,
+        ...(githubURL && { codeRepository: githubURL }),
+        ...(liveURL && { url: liveURL }),
+        ...(githubURL && {
+          license: `https://opensource.org/licenses/${license}`,
+        }),
+        author: { "@id": personId },
+      },
+      {
+        "@type": "Person",
+        "@id": personId,
+        name: "Faisal Safadi",
+        url: baseURL,
+        jobTitle: "Full-Stack Developer & Technical SEO",
+        sameAs: [mainSiteURL],
+      },
+      breadcrumbs([
+        { name: "Home", path: "/" },
+        { name: "Open Source", path: "/open-source" },
+        { name: title, path },
       ]),
     ],
   };

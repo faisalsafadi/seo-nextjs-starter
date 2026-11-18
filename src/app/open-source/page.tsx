@@ -1,11 +1,14 @@
 import { pageMetadata } from "@/lib/seo";
 import { examples } from "#site/content";
 import ExampleCard from "@/components/ExampleCard";
+import JsonLd from "@/components/JsonLd";
+import { baseURL, siteName } from "@/config";
+
 
 export const metadata = pageMetadata(
-  "Open Source",
+  "Open Source Projects & Tools", // 30 chars + 16 = 46 ✅
   "/open-source",
-  "Open-source tools, experimental projects, and technical demos by Faisal Safadi.",
+  "Open-source tools, experimental projects and technical demos by Faisal Safadi — built with Next.js, Laravel and TypeScript." // 134 ✅
 );
 
 export default function Examples() {
@@ -13,6 +16,32 @@ export default function Examples() {
 
   return (
     <main id="main">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "CollectionPage",
+              "@id": `${baseURL}/open-source#page`,
+              url: `${baseURL}/open-source`,
+              name: "Open Source Projects & Tools",
+              description:
+                "Open-source tools, experimental projects and technical demos by Faisal Safadi.",
+              isPartOf: { "@id": `${baseURL}/#website` },
+              about: { "@id": `${baseURL}/#person` },
+              mainEntity: {
+                "@type": "ItemList",
+                itemListElement: sortedExamples.map((project, i) => ({
+                  "@type": "ListItem",
+                  position: i + 1,
+                  url: `${baseURL}/open-source/${project.slug}`,
+                  name: project.title,
+                })),
+              },
+            },
+          ],
+        }}
+      />
       <section className="shell page-hero">
         <span className="eyebrow">OPEN SOURCE & EXPERIMENTS</span>
         <h1>

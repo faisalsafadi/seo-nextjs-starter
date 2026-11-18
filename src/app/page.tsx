@@ -105,12 +105,7 @@ export default function Home() {
               name: siteName,
               description: "Full-stack developer with 12+ years of experience.",
               publisher: { "@id": `${baseURL}/#person` },
-              // ✨ ajout : indique à Google la structure du site
-              potentialAction: {
-                "@type": "SearchAction",
-                target: `${baseURL}/work?q={search_term_string}`,
-                "query-input": "required name=search_term_string",
-              },
+
             },
             {
               "@type": "Person",
@@ -142,6 +137,16 @@ export default function Home() {
                 "Freelance full-stack development, legacy system rescue, and technical SEO consulting.",
               areaServed: "Worldwide",
               founder: { "@id": `${baseURL}/#person` },
+
+              telephone: "+212 6 68 96 41 68", 
+              priceRange: "$$$",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Marrakech",
+                addressCountry: "MA"
+              },
+              image: `${baseURL}/api/og?title=Faisal%20Safadi%20%E2%80%94%20Full-Stack%20Development%20%26%20SEO`, // ou une URL d'image fix
+
               // ✨ ajout : lie les 3 services
               hasOfferCatalog: {
                 "@type": "OfferCatalog",

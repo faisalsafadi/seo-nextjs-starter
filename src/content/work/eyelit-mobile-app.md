@@ -5,7 +5,7 @@ date: "2025-06-21"
 category: "Mobile & Full-Stack"
 technologies: ["Flutter", "Laravel 11", "Filament V3", "REST API", "Sanctum"]
 featured: true
-order: 4
+order: 1
 coverImage: "/images/work/eyelit-mobile-app.png"
 ---
 

@@ -5,7 +5,7 @@ date: "2025-06-28"
 category: "CMS & E-Commerce Showcase"
 technologies: ["WordPress", "Custom Post Types", "HTML5", "CSS3", "JavaScript", "PHP", "Yoast SEO"]
 featured: false
-order: 4
+order: 13
 coverImage: "/images/work/atelier-cuir-elegant.png"
 ---
 

@@ -5,7 +5,7 @@ date: "2025-06-20"
 category: "CMS & eCommerce"
 technologies: ["WordPress", "WooCommerce", "Elementor", "Tailwind CSS", "Vite.js", "PHP"]
 featured: true
-order: 3
+order: 2
 coverImage: "/images/work/eyelit-theme.webp"
 ---
 

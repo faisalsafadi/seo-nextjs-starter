@@ -85,7 +85,7 @@ export default async function ExampleDetail({ params }: { params: Promise<{ slug
             </section>
             {project.coverImage && (
                 <section className="shell" style={{ marginTop: "2rem", marginBottom: "2rem" }}>
-                    <div className="relative w-full aspect-[21/9] sm:aspect-[16/7] overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-alt)]">
+                    <div className="relative w-full aspect-[3/1] overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-alt)]">
                         <Image
                             src={project.coverImage}
                             alt={project.title}

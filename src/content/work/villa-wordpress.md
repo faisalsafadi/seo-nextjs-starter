@@ -5,7 +5,7 @@ date: "2025-05-10"
 category: "CMS"
 technologies: ["WordPress", "PHP", "SEO"]
 featured: false
-order: 2
+order: 17
 coverImage: "/images/work/villa-wordpress.png"
 ---
 

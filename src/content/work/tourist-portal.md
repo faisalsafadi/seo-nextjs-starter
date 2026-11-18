@@ -5,7 +5,7 @@ date: "2025-06-22"
 category: "CMS & Directory"
 technologies: ["WordPress", "Custom Post Types", "Google Maps API", "Yoast SEO", "PHP"]
 featured: false
-order: 5
+order: 7
 coverImage: "/images/work/annuaire-marrakech.jpg"
 ---
 

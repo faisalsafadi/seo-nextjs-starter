@@ -163,9 +163,14 @@ export default function Home() {
               Discuss your project <ArrowRight size={16} />
             </Link>
             <Link className="button button-outline" href="/work">
-              Or see my work
+              See my work
+            </Link>
+            <Link className="button button-outline button-open-source" href="/open-source">
+              Explore my open source
             </Link>
           </div>
+
+
           <div className="hero-note">
             <span>Remote-first</span>
             <i /> English · Français · العربية

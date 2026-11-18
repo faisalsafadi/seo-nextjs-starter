@@ -5,7 +5,7 @@ date: "2025-07-15"
 category: "CMS & Web Design"
 technologies: ["WordPress", "HTML5", "CSS3", "JavaScript", "PHP", "Yoast SEO"]
 featured: false
-order: 3
+order: 14
 coverImage: "/images/work/maison-charme-marrakech.jpg"
 ---
 

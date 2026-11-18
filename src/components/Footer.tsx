@@ -21,7 +21,7 @@ export default function Footer() {
           © {new Date().getFullYear()} {siteName}
         </span>
 
-        <a href={mainSiteURL} target="_blank" rel="noopener noreferrer">
+        <a href={mainSiteURL} target="_blank" rel="noopener">
           Faisal Safadi ↗
         </a>
       </div>

@@ -145,7 +145,7 @@ export default function Home() {
                 addressLocality: "Marrakech",
                 addressCountry: "MA"
               },
-              image: `${baseURL}/images/logo.webp`,
+              image: `${baseURL}/images/banniere.png`,
 
               // ✨ ajout : lie les 3 services
               hasOfferCatalog: {

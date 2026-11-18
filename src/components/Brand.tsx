@@ -4,7 +4,7 @@ export default function Brand({ compact = false }: { compact?: boolean }) {
       <span className="brand-mark" aria-hidden="true">
         <img
           src="/images/logo.webp"
-          alt="Full-Stack Engineer"
+          alt="Logo de Faisal Safadi — Full-Stack Engineer"
           width={150}
           height={150}
           className="brand-webp"

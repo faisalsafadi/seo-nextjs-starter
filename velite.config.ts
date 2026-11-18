@@ -5,7 +5,7 @@ const baseSchema = s.object({
   title: s.string().max(99),
   description: s.string().max(200),
   date: s.isodate(),
-  category: s.enum(["Full-Stack", "Frontend", "Backend", "SEO", "CMS", "CMS & eCommerce","Mobile & Full-Stack","CMS & Directory","CMS & E-Commerce Showcase","CMS & Web Design","Full-Stack Development","E-commerce Development","Web Development"]),
+  category: s.enum(["Full-Stack", "Frontend", "Backend", "SEO", "CMS", "CMS & eCommerce","Mobile & Full-Stack","CMS & Directory","CMS & E-Commerce Showcase","CMS & Web Design","Full-Stack Development","E-commerce Development","Web Development","Agency Services"]),
   technologies: s.array(s.string()).default([]),
   featured: s.boolean().default(false),
   order: s.number().default(0),

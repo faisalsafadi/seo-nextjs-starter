@@ -145,7 +145,7 @@ export default function Home() {
                 addressLocality: "Marrakech",
                 addressCountry: "MA"
               },
-              image: `${baseURL}/api/og?title=Faisal%20Safadi%20%E2%80%94%20Full-Stack%20Development%20%26%20SEO`, // ou une URL d'image fix
+              image: `${baseURL}/images/logo.webp`,
 
               // ✨ ajout : lie les 3 services
               hasOfferCatalog: {

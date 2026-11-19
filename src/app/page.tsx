@@ -143,6 +143,8 @@ export default function Home() {
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Marrakech",
+                postalCode:"40000",
+                streetAddress:"Menara centre ville",
                 addressCountry: "MA"
               },
               image: `${baseURL}/images/banniere.png`,
